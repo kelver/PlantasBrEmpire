@@ -1,0 +1,89 @@
+<!-- sidebar start -->
+<!-- ================ -->
+<aside class="col-md-3 col-lg-3">
+    <div class="sidebar">
+        <div class="block clearfix">
+            <h3 class="title">Lista de Espécies</h3>
+            <div class="separator-2"></div>
+            <div class="row grid-space-10">
+                {% for especie in especies %}
+                <div class="col-xs-4 col-md-6">
+                    <div class="image-box style-2 mb-20 bordered light-gray-bg">
+                        <div class="overlay-container overlay-visible">
+                            <img src="./assets/imagens/especies/{{ especie.imagem }}" alt="">
+                            <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
+                        </div>
+                        <div class="text-center">
+                            <h6>{{ especie.especie }}</h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-right space-top">
+                <a href="" class="link-dark"><i class="fa fa-plus-circle pl-5 pr-5"></i>Mais</a>
+            </div>
+        </div>
+        <div class="block clearfix">
+            <div class="footer-content">
+                <h3 class="title">Últimas do Blog</h3>
+                <div class="separator-2"></div>
+                <div class="media margin-clear">
+                    <div class="media-left">
+                        <div class="overlay-container">
+                            <img class="media-object" src="./assets/images/blog-thumb-1.jpg" alt="blog-thumb">
+                            <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading"><a href="">Lorem ipsum dolor sit amet...</a></h6>
+                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 23, 2016</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="media margin-clear">
+                    <div class="media-left">
+                        <div class="overlay-container">
+                            <img class="media-object" src="./assets/images/blog-thumb-2.jpg" alt="blog-thumb">
+                            <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading"><a href="">Lorem ipsum dolor sit amet...</a></h6>
+                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 22, 2016</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="media margin-clear">
+                    <div class="media-left">
+                        <div class="overlay-container">
+                            <img class="media-object" src="./assets/images/blog-thumb-3.jpg" alt="blog-thumb">
+                            <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading"><a href="">Lorem ipsum dolor sit amet...</a></h6>
+                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="media margin-clear">
+                    <div class="media-left">
+                        <div class="overlay-container">
+                            <img class="media-object" src="./assets/images/blog-thumb-4.jpg" alt="blog-thumb">
+                            <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading"><a href="">Lorem ipsum dolor sit amet...</a></h6>
+                        <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>Mar 21, 2016</p>
+                    </div>
+                </div>
+                <div class="text-right space-top">
+                    <a href="blog-large-image-right-sidebar.html" class="link-dark"><i class="fa fa-plus-circle pl-5 pr-5"></i>Mais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- sidebar end -->

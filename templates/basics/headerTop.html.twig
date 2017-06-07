@@ -1,0 +1,109 @@
+<!-- scrollToTop -->
+<!-- ================ -->
+<div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>
+
+<!-- page wrapper start -->
+<!-- ================ -->
+<div class="page-wrapper">
+
+    <!-- header-container start -->
+    <div class="header-container">
+
+        <!-- header-top start -->
+        <!-- classes:  -->
+        <!-- "dark": dark version of header top e.g. class="header-top dark" -->
+        <!-- "colored": colored version of header top e.g. class="header-top colored" -->
+        <!-- ================ -->
+        <div class="header-top dark ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-6 col-md-9">
+                        <!-- header-top-first start -->
+                        <!-- ================ -->
+                        <div class="header-top-first clearfix">
+                            <ul class="social-links circle small clearfix hidden-xs">
+                                <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
+                                <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                            <div class="social-links hidden-lg hidden-md hidden-sm circle small">
+                                <div class="btn-group dropdown">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
+                                    <ul class="dropdown-menu dropdown-animation">
+                                        <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                        <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
+                                        <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul class="list-inline hidden-sm hidden-xs">
+                                <li><i class="fa fa-phone pr-5 pl-10"></i>+12 123 123 123</li>
+                                <li><i class="fa fa-envelope-o pr-5 pl-10"></i> contato@plantasbrasil.com</li>
+                            </ul>
+                        </div>
+                        <!-- header-top-first end -->
+                    </div>
+                    <div class="col-xs-9 col-sm-6 col-md-3">
+
+                        <!-- header-top-second start -->
+                        <!-- ================ -->
+                        <div id="header-top-second"  class="clearfix">
+
+                            {% if Auth.check() %}
+                                <div class="header-top-dropdown text-right">
+                                    <div class="btn-group">
+                                        <span class="btn btn-default btn-sm" style="cursor: auto;"><i class="fa fa-user pr-10"></i> Bem vindo {{ Auth.user().usuario|capitalize }}</span>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="{{ route('auth.logout') }}" class="btn btn-default btn-sm"><i class="fa fa-sign-out pr-10"></i> Sair</a>
+                                    </div>
+                                </div>
+                            {% else %}
+                            <!-- header top dropdowns start -->
+                            <!-- ================ -->
+                            <div class="header-top-dropdown text-right">
+                                <div class="btn-group">
+                                    <a href="cadastro.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Assinar</a>
+                                </div>
+                                <div class="btn-group dropdown">
+                                    <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Acesso</button>
+                                    <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                                        <li>
+                                            <form class="login-form margin-clear">
+                                                <div class="form-group has-feedback">
+                                                    <label class="control-label">Usuário</label>
+                                                    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">
+                                                    <i class="fa fa-user form-control-feedback"></i>
+                                                </div>
+                                                <div class="form-group has-feedback">
+                                                    <label class="control-label">Senha</label>
+                                                    <input type="password" class="form-control" name="senha" id="senha" placeholder="">
+                                                    <i class="fa fa-lock form-control-feedback"></i>
+                                                </div>
+                                                <button type="submit" name="entrar" id="entrar" class="btn btn-gray btn-sm col-md-12 col-lg-12 col-sm-12 col-xs-12">Entrar</button>
+                                                <span class="pl-5 pr-5 col-md-12 col-lg-12 col-sm-12 col-xs-12" style="text-align:center; padding: 5px 0;">ou</span>
+                                                <a href="cadastro.php" class="btn btn-default btn-sm col-md-12 col-lg-12 col-sm-12 col-xs-12">Cadastre-se</a>
+                                                <ul>
+                                                    <li><a href="">Esqueceu a senha?</a></li>
+                                                </ul>
+                                                <!--<span class="text-center">Login with</span>-->
+                                                <!--<ul class="social-links circle small colored clearfix">-->
+                                                    <!--<li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>-->
+                                                    <!--<li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>-->
+                                                    <!--<li class="googleplus"><a target="_blank" href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>-->
+                                                <!--</ul>-->
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--  header top dropdowns end -->
+                            {% endif %}
+                        </div>
+                        <!-- header-top-second end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header-top end -->
+    </div>

@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>#</th>
+        <th>Categoria</th>
+        <th>Nome</th>
+    </tr>
+    {% for category in categorias %}
+    <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.usuario }}</td>
+        <td>{{ category.nome }}</td>
+    </tr>
+    {% endfor %}
+</table>
