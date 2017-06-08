@@ -30,14 +30,15 @@ class CadastrosSeeder extends AbstractSeed
         ])->save();
 
         $data = [];
-        foreach(range(1,3) as $value){
+        $i = 2;
+        foreach(range(1,2) as $value){
             $data[] = [
                     'usuario' => $faker->firstName,
                     'senha' => $auth->hashPassword('123456'),
                     'primeiro_acesso' => date('Y-m-d H:i:s'),
                     'ultimo_acesso' => date('Y-m-d H:i:s'),
                     'status' => 1,
-                    'idPessoa' => 1
+                    'idPessoa' => $i++
                 ];
         }
         $cadastros->insert($data)->save();
