@@ -4,6 +4,11 @@ use Psr\Http\Message\ServerRequestInterface;
 $app
     ->get('/login', function () use ($app){
         $view = $app->service('view.renderer');
+        $auth = $app->service('auth');
+        if($auth->check()){
+            return $app->route('index');
+        }
+
         return $view->render('login.html.twig');
     }, 'auth.show_login_form')
     ->post('/login', function (ServerRequestInterface $request) use ($app){

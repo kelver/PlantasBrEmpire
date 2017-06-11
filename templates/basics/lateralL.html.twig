@@ -14,7 +14,7 @@
                             <a href="" class="overlay-link small"><i class="fa fa-link"></i></a>
                         </div>
                         <div class="text-center">
-                            <h6>{{ especie.especie }}</h6>
+                            <h6>{{ especie.especie|length > 10 ? especie.especie|slice(0, 15) ~ '...' : especie.especie }}</h6>
                         </div>
                     </div>
                 </div>

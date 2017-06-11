@@ -13,11 +13,11 @@ $app
 
         $result = $auth->login($data);
         if(!$result){
-            return $view->render('admin/index.html.twig');
+            return $view->render('admin/login.html.twig');
         }
         return $app->route('admin.index');
     }, 'admin.auth.login')
     ->get('/admin/logout', function () use ($app){
-        $app->service('auth')->logout();
+        $app->service('auth.admin')->logout();
         return $app->route('admin.auth.show_login_form');
     }, 'admin.auth.logout');

@@ -6,6 +6,7 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
 
 use PlantasBr\Application;
 use PlantasBr\Plugins\AuthPlugin;
+use PlantasBr\Plugins\AuthAdminPlugin;
 use PlantasBr\Plugins\DbPlugin;
 use PlantasBr\Plugins\RouterPlugin;
 use PlantasBr\Plugins\ViewPlugin;
@@ -21,6 +22,7 @@ $app->plugin(new RouterPlugin());
 $app->plugin(new ViewPlugin());
 $app->plugin(new DbPlugin());
 $app->plugin(new AuthPlugin());
+$app->plugin(new AuthAdminPlugin());
 
 require_once (__DIR__ . '/../src/controllers/auth.php');
 require_once (__DIR__ . '/../src/controllers/index.php');

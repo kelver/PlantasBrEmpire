@@ -16,7 +16,6 @@ use PlantasBr\ServiceContainerInterface;
 
 class AuthPlugin implements PluginInterface
 {
-
     public function register(ServiceContainerInterface $container)
     {
         $container->addLazy('jasny.auth', function(ContainerInterface $container){
@@ -24,13 +23,6 @@ class AuthPlugin implements PluginInterface
         });
         $container->addLazy('auth', function(ContainerInterface $container){
             return new Auth($container->get('jasny.auth'));
-        });
-
-        $container->addLazy('jasny.auth.admin', function(ContainerInterface $container){
-            return new JasnyAuth($container->get('userAdm.repository'));
-        });
-        $container->addLazy('auth.admin', function(ContainerInterface $container){
-            return new Auth($container->get('jasny.auth.admin'));
         });
     }
 }
