@@ -26,6 +26,7 @@ $app->before(
     function() use($app) {
         $route = $app->service('route');
         $auth = $app->service('auth');
+        $authAdm = $app->service('auth.admin');
 
         $routesWhiteList = [
             'auth.show_login_form',
@@ -33,8 +34,20 @@ $app->before(
             'auth.logout'
         ];
 
-        if(!in_array($route->name, $routesWhiteList) && !$auth->check()){
-            return $app->route('auth.show_login_form');
+        $routesWhiteListAdmin = [
+            'admin.auth.show_login_form',
+            'admin.auth.login',
+            'admin.auth.logout'
+        ];
+        $rotaLocal = explode('.', $route->name);
+        if($rotaLocal[0] != 'admin') {
+            if (!in_array($route->name, $routesWhiteList) && !$auth->check()) {
+                return $app->route('auth.show_login_form');
+            }
+        }else{
+            if (!in_array($route->name, $routesWhiteListAdmin) && !$authAdm->check()) {
+                return $app->route('admin.auth.show_login_form');
+            }
         }
     }
 );

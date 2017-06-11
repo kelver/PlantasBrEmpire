@@ -31,6 +31,9 @@ require_once (__DIR__ . '/../src/controllers/glossario.php');
 require_once (__DIR__ . '/../src/controllers/referencias.php');
 require_once (__DIR__ . '/../src/controllers/contato.php');
 
+require_once (__DIR__ . '/../src/controllers/admin/index.php');
+require_once (__DIR__ . '/../src/controllers/admin/auth.php');
+
 //    ->get('/home', function (ServerRequestInterface $request) use ($app){
 //        $view = $app->service('view.renderer');
 //
