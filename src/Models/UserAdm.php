@@ -8,7 +8,6 @@
 
 namespace PlantasBr\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Jasny\Auth\User as JasnyUser;
 

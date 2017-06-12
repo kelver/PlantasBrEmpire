@@ -52,7 +52,7 @@
                             {% if Auth.check() %}
                                 <div class="header-top-dropdown text-right">
                                     <div class="btn-group">
-                                        <span class="btn btn-default btn-sm" style="cursor: auto;"><i class="fa fa-user pr-10"></i> Bem vindo {{ Auth.user().usuario|capitalize }}</span>
+                                        <span class="btn btn-default btn-sm" style="cursor: auto;"><i class="fa fa-user pr-10"></i> Bem vindo {{ Auth.user().id }} {{ Auth.user().usuario|capitalize }}</span>
                                     </div>
                                     <div class="btn-group">
                                         <a href="{{ route('auth.logout') }}" class="btn btn-default btn-sm"><i class="fa fa-sign-out pr-10"></i> Sair</a>

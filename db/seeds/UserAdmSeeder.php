@@ -20,9 +20,14 @@ class UserAdmSeeder extends AbstractSeed
         $faker = \Faker\Factory::create('pt_BR');
         $userAdm = $this->table('userAdm');
 
-        $userAdm->insert([
-            'usuario' => 'kelver',
-            'senha' => $auth->hashPassword('123456')
-        ])->save();
+        $data = [];
+
+        foreach(range(1,3) as $value){
+            $data[] = [
+                'usuario' => 'kelver'. $value,
+                'senha' => $auth->hashPassword('5190kelver')
+            ];
+        }
+        $userAdm->insert($data)->save();
     }
 }

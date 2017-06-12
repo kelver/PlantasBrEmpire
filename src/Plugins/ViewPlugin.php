@@ -29,9 +29,11 @@ class ViewPlugin implements PluginInterface
             $twig = new \Twig_Environment($loader);
 
             $auth = $container->get('auth');
+            $authAdmin = $container->get('auth.admin');
 
             $generator = $container->get('routing.generator');
-            $twig->addExtension(new TwigGlobals($auth));
+            $twig->addExtension(new TwigGlobals($auth, $authAdmin));
+
             $twig->addFunction(new \Twig_SimpleFunction('route',
                 function(string $name, array $params = []) use($generator){
                     return$generator->generate($name, $params);
