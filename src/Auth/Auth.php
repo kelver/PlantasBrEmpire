@@ -9,13 +9,16 @@
 namespace PlantasBr\Auth;
 
 
+use Jasny\Authz;
+use Jasny\Authz\ByLevel;
 use PlantasBr\Models\UserInterface;
 
-class Auth implements AuthInterface
+class Auth implements AuthInterface, Authz
 {
     /**
      * @var JasnyAuth
      */
+    use ByLevel;
     private $jasnyAuth;
 
     /**
@@ -58,5 +61,13 @@ class Auth implements AuthInterface
         if(session_status() == PHP_SESSION_NONE){
             session_start();
         }
+    }
+
+    public function getAccessLevels()
+    {
+        return [
+                'user' => 0,
+                'admin' => 1
+            ];
     }
 }

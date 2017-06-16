@@ -15,4 +15,5 @@ interface UserInterface
     public function getUsuario():string;
     public function getStatus():string;
     public function getSenha():string;
+    public function getRole():int;
 }

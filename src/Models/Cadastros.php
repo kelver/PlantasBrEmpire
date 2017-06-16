@@ -25,7 +25,8 @@ class Cadastros extends Model implements JasnyUser, UserInterface
         'primeiro_acesso',
         'ultimo_acesso',
         'status',
-        'idPessoa'
+        'idPessoa',
+        'tipo'
     ];
 
     /**
@@ -93,5 +94,10 @@ class Cadastros extends Model implements JasnyUser, UserInterface
     public function getSenha(): string
     {
         return $this->senha;
+    }
+
+    public function getRole(): int
+    {
+        return $this->tipo;
     }
 }

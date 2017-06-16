@@ -26,7 +26,18 @@ class CadastrosSeeder extends AbstractSeed
             'primeiro_acesso' => date('Y-m-d H:i:s'),
             'ultimo_acesso' => date('Y-m-d H:i:s'),
             'status' => 1,
-            'idPessoa' => 1
+            'idPessoa' => 1,
+            'tipo' => 0 // 0 usuario comum, 1 usuário adm
+        ])->save();
+
+        $cadastros->insert([
+            'usuario' => 'kelver2',
+            'senha' => $auth->hashPassword('123456'),
+            'primeiro_acesso' => date('Y-m-d H:i:s'),
+            'ultimo_acesso' => date('Y-m-d H:i:s'),
+            'status' => 1,
+            'idPessoa' => 1,
+            'tipo' => 1 // 0 usuario comum, 1 usuário adm
         ])->save();
 
         $data = [];
@@ -38,7 +49,8 @@ class CadastrosSeeder extends AbstractSeed
                     'primeiro_acesso' => date('Y-m-d H:i:s'),
                     'ultimo_acesso' => date('Y-m-d H:i:s'),
                     'status' => 1,
-                    'idPessoa' => $i++
+                    'idPessoa' => $i++,
+                    'tipo' => 0 // 0 usuario comum, 1 usuário adm
                 ];
         }
         $cadastros->insert($data)->save();

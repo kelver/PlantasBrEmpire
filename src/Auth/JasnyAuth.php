@@ -12,10 +12,13 @@ namespace PlantasBr\Auth;
 use Jasny\Auth;
 use Jasny\Auth\Sessions;
 use Jasny\Auth\User;
+use Jasny\Authz;
+use Jasny\Authz\ByGroup;
 use PlantasBr\Repository\RepositoryInterface;
 
 class JasnyAuth extends Auth
 {
+
     use Sessions;
     /**
      * @var RepositoryInterface

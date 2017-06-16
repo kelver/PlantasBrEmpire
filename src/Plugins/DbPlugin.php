@@ -13,7 +13,7 @@ use Interop\Container\ContainerInterface;
 use PlantasBr\Models\Cadastros;
 use PlantasBr\Models\Contatos;
 use PlantasBr\Models\Especies;
-use PlantasBr\Models\UserAdm;
+use PlantasBr\Models\Pessoa;
 use PlantasBr\Repository\RepositoryFactory;
 use PlantasBr\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -39,8 +39,8 @@ class DbPlugin implements PluginInterface
         $container->addLazy('user.repository', function (ContainerInterface $container) {
             return $container->get('repository.factory')->factory(Cadastros::class);
         });
-        $container->addLazy('userAdm.repository', function (ContainerInterface $container) {
-            return $container->get('repository.factory')->factory(UserAdm::class);
+        $container->addLazy('pessoa.repository', function (ContainerInterface $container) {
+            return $container->get('repository.factory')->factory(Pessoa::class);
         });
     }
 }

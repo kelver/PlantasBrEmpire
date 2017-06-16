@@ -23,17 +23,15 @@ class TwigGlobals extends \Twig_Extension implements \Twig_Extension_GlobalsInte
     /**
      * TwigGlobals constructor.
      */
-    public function __construct(AuthInterface $auth, AuthAdminInterface $authAdmin)
+    public function __construct(AuthInterface $auth)
     {
         $this->auth = $auth;
-        $this->authAdmin = $authAdmin;
     }
 
     public function getGlobals()
     {
         return [
-            'Auth' => $this->auth,
-            'AuthAdmin' => $this->authAdmin
+            'Auth' => $this->auth
         ];
     }
 }

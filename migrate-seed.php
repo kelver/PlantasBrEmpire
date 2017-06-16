@@ -13,4 +13,3 @@
  exec(__DIR__ . '/vendor/bin/phinx seed:run -s PessoaSeeder');
  exec(__DIR__ . '/vendor/bin/phinx seed:run -s CadastrosSeeder');
  exec(__DIR__ . '/vendor/bin/phinx seed:run -s EspeciesSeeder');
- exec(__DIR__ . '/vendor/bin/phinx seed:run -s UserAdmSeeder');

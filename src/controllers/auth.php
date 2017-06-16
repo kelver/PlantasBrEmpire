@@ -5,7 +5,7 @@ $app
     ->get('/login', function () use ($app){
         $view = $app->service('view.renderer');
         $auth = $app->service('auth');
-        if($auth->check()){
+        if($auth->check() && $auth->is('user')){
             return $app->route('index');
         }
 
@@ -17,8 +17,16 @@ $app
         $data = $request->getParsedBody();
 
         $result = $auth->login($data);
+
+        print_r("<pre>");
+        print_r($auth->is('user'));
+        die("asd");
+
         if(!$result){
             return $view->render('login.html.twig');
+        }
+        if(!$auth->is('user')){
+            return $app->route('auth.logout');
         }
         return $app->route('index');
     }, 'auth.login')
@@ -28,11 +36,9 @@ $app
     }, 'auth.logout');
 
 $app->before(
-    function() use($app) {
+    function(ServerRequestInterface $request) use($app) {
         $route = $app->service('route');
         $auth = $app->service('auth');
-        $authAdm = $app->service('auth.admin');
-
         $routesWhiteList = [
             'auth.show_login_form',
             'auth.login',
@@ -46,11 +52,11 @@ $app->before(
         ];
         $rotaLocal = explode('.', $route->name);
         if($rotaLocal[0] != 'admin') {
-            if (!in_array($route->name, $routesWhiteList) && !$auth->check()) {
+            if (!in_array($route->name, $routesWhiteList) && (!$auth->check() || !$auth->is('user'))) {
                 return $app->route('auth.show_login_form');
             }
         }else{
-            if (!in_array($route->name, $routesWhiteListAdmin) && !$authAdm->check()) {
+            if (!in_array($route->name, $routesWhiteListAdmin) && (!$auth->check() || !$auth->is('admin'))) {
                 return $app->route('admin.auth.show_login_form');
             }
         }

@@ -6,7 +6,6 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
 
 use PlantasBr\Application;
 use PlantasBr\Plugins\AuthPlugin;
-use PlantasBr\Plugins\AuthAdminPlugin;
 use PlantasBr\Plugins\DbPlugin;
 use PlantasBr\Plugins\RouterPlugin;
 use PlantasBr\Plugins\ViewPlugin;
@@ -22,7 +21,6 @@ $app->plugin(new RouterPlugin());
 $app->plugin(new ViewPlugin());
 $app->plugin(new DbPlugin());
 $app->plugin(new AuthPlugin());
-$app->plugin(new AuthAdminPlugin());
 
 require_once (__DIR__ . '/../src/controllers/auth.php');
 require_once (__DIR__ . '/../src/controllers/index.php');
@@ -33,8 +31,10 @@ require_once (__DIR__ . '/../src/controllers/glossario.php');
 require_once (__DIR__ . '/../src/controllers/referencias.php');
 require_once (__DIR__ . '/../src/controllers/contato.php');
 
-require_once (__DIR__ . '/../src/controllers/admin/index.php');
+// Rotas Administrativas
 require_once (__DIR__ . '/../src/controllers/admin/auth.php');
+require_once (__DIR__ . '/../src/controllers/admin/index.php');
+require_once (__DIR__ . '/../src/controllers/admin/cadastros.php');
 
 //    ->get('/home', function (ServerRequestInterface $request) use ($app){
 //        $view = $app->service('view.renderer');
