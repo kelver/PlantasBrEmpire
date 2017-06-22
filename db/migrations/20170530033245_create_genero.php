@@ -7,6 +7,7 @@ class CreateGenero extends AbstractMigration
     public function up(){
         $this->table('genero')
             ->addColumn('genero', 'string')
+            ->addColumn('status', 'integer')
             ->save();
     }
 

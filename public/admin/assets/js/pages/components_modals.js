@@ -307,6 +307,27 @@ $(function() {
         });
     });
 
+    // Warning alert
+    $('.sweet_warning').on('click', function() {
+        $('.sa-confirm-button-container .confirm').attr('data-rota', $(this).data('rota'));
+
+        swal({
+            title: $(this).data('title'),
+            text: $(this).data('text'),
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ffa433",
+            confirmButtonText: 'Sim, ' + $(this).data('status') + '!',
+            closeOnConfirm: false
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    window.location.href = $('.sa-confirm-button-container .confirm').data('rota');
+                }
+            }
+        );
+    });
+
     // Info alert
     $('#sweet_info').on('click', function() {
         swal({

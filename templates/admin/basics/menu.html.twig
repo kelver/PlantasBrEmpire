@@ -38,17 +38,17 @@
                     <li>
                         <a href="#"><i class="fa fa-cogs"></i> <span>Parâmetros</span></a>
                         <ul>
-                            <li><a href="colors_danger.html">Categorias</a></li>
-                            <li><a href="colors_success.html">Continentes</a></li>
+                            <li><a href="{{ route('admin.categorias.list') }}">Categorias</a></li>
+                            <li><a href="{{ route('admin.continentes.list') }}">Continentes</a></li>
                             <li><a href="colors_warning.html">Endemismo</a></li>
                             <li><a href="colors_primary.html">Espécies</a></li>
-                            <li><a href="colors_info.html">Gênero</a></li>
-                            <li><a href="colors_info.html">Origem</a></li>
-                            <li><a href="colors_info.html">Países</a></li>
-                            <li><a href="colors_info.html">Tipos de Folha</a></li>
+                            <li><a href="{{ route('admin.generos.list') }}">Gênero</a></li>
+                            <li><a href="{{ route('admin.origens.list') }}">Origem</a></li>
+                            <li><a href="{{ route('admin.paises.list') }}">Países</a></li>
+                            <li><a href="{{ route('admin.tipoFolha.list') }}">Tipos de Folha</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html"><i class="fa fa-id-card-o"></i> <span>Glossário Ilustrado</span></a></li>
+                    <li><a href="{{ route('admin.glossarios.list') }}"><i class="fa fa-id-card-o"></i> <span>Glossário Ilustrado</span></a></li>
                     <li><a href="index.html"><i class="fa fa-indent"></i> <span>Referências</span></a></li>
                     <!-- /main -->
                 </ul>

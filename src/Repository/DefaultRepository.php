@@ -64,4 +64,13 @@ class DefaultRepository implements RepositoryInterface
     {
         return $this->model->where($field, '=', $value)->get();
     }
+
+    public function findOneBy(array $search)
+    {
+        $queryBuilder = $this->model;
+        foreach ($search as $field => $value) {
+            $queryBuilder = $queryBuilder->where($field, '=', $value);
+        }
+        return $queryBuilder->firstOrFail();
+    }
 }

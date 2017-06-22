@@ -14,6 +14,6 @@ class AddFieldTipoUsuario extends AbstractMigration
     public function down()
     {
         $this->table('cadastro')
-            ->removeColumn('tipo', 'integer');
+            ->removeColumn('tipo');
     }
 }

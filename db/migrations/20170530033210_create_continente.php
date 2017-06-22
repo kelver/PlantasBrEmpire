@@ -7,6 +7,7 @@ class CreateContinente extends AbstractMigration
     public function up(){
         $this->table('continente')
             ->addColumn('continente', 'string')
+            ->addColumn('status', 'integer')
             ->save();
     }
 

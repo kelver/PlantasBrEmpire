@@ -6,7 +6,8 @@ class CreatePaises extends AbstractMigration
 {
     public function up(){
         $this->table('paises')
-            ->addColumn('paises', 'string')
+            ->addColumn('pais', 'string')
+            ->addColumn('status', 'integer')
             ->save();
     }
 

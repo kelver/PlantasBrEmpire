@@ -1,0 +1,67 @@
+{% include 'admin/basics/top.html.twig' %}
+
+<body>
+{% include 'admin/basics/header.html.twig' %}
+<!-- Page container -->
+<div class="page-container">
+
+	<!-- Page content -->
+	<div class="page-content">
+
+        {% include 'admin/basics/menu.html.twig' %}
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+			<!-- Content area -->
+			<div class="content">
+				<!-- Dashboard content -->
+				<div class="row">
+					<div class="col-lg-12">
+
+						<!-- Lista usuários -->
+						<div class="panel panel-flat">
+							<div class="panel-heading">
+								<h5 class="panel-title">Continente</h5>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<form action="{{ route('admin.continentes.store') }}" method="post">
+										<div class="panel panel-flat">
+											<div class="panel-body">
+
+												<fieldset class="content-group">
+													<div class="form-group">
+														<label for="nome" class="control-label">Continente:</label>
+														<input name="continente" id="continente" type="text" class="form-control" placeholder="Continente">
+													</div>
+												</fieldset>
+
+												<button type="submit" class="btn bg-teal-400 pull-right"><i class="fa fa-pencil-square-o position-left"></i> Salvar </button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!-- /Lista usuários -->
+					</div>
+				</div>
+				<!-- /dashboard content -->
+
+
+                {% include 'admin/basics/rodape.html.twig' %}
+
+			</div>
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

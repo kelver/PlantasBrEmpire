@@ -20,7 +20,8 @@ class CategoriasSeeder extends AbstractSeed
 
 //        foreach(range(1,10) as $value){
             $data[] = [
-                    'categoria' => $faker->name
+                    'categoria' => $faker->name,
+                    'status' => 1
                 ];
 //        }
         $categorias->insert($data)->save();

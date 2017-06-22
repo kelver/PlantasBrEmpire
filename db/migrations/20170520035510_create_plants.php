@@ -57,6 +57,7 @@ class CreatePlants extends AbstractMigration
             ->addColumn('cor_interna_casca', 'string')
             ->addColumn('textura_interna_casca', 'string')
             ->addColumn('caracteres_especiais_casca', 'string')
+            ->addColumn('status', 'integer')
             ->save();
     }
 

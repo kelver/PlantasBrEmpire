@@ -1,0 +1,112 @@
+{% include 'admin/basics/top.html.twig' %}
+
+<body>
+{% include 'admin/basics/header.html.twig' %}
+<!-- Page container -->
+<div class="page-container">
+
+	<!-- Page content -->
+	<div class="page-content">
+
+        {% include 'admin/basics/menu.html.twig' %}
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+			<!-- Content area -->
+			<div class="content">
+				<!-- Dashboard content -->
+				<div class="row">
+					<div class="col-lg-12">
+
+						<!-- Lista usuários -->
+						<div class="panel panel-flat">
+							<div class="panel-heading">
+								<h5 class="panel-title col-md-10">Glossarios</h5>
+								<a href="{{ route('admin.glossarios.new') }}" class="btn btn-success btn-labeled"><b><i class="fa fa-plus"></i></b> Novo</a>
+							</div>
+
+							<table class="table datatable-basic table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Glossario</th>
+										<th class="text-center"></th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for glossario in glossarios %}
+									<tr>
+										<td>{{ glossario.id }}</td>
+										<td>{{ glossario.glossario }}</td>
+										<td>
+											<span class="label label-{{ glossario.status == 1 ? 'success' : 'danger' }}">
+												{{ glossario.status == 1 ? 'Ativo' : 'Inativo' }}
+											</span>
+										</td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li class="dropdown">
+													<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+														<i class="icon-menu9"></i>
+													</a>
+
+                                                    {% set newStatus = glossario.status == 1 ? '0' : '1' %}
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="{{ route('admin.glossarios.edit', {'id': glossario.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
+														<li><a class="sweet_warning" data-title="{{ glossario.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
+															   data-text="Realmente deseja {{ glossario.status == 1 ? 'inativar' : 'ativar' }} a glossario {{ glossario.glossario }}?"
+																data-rota="{{ route('admin.glossarios.status', {'id': glossario.id, 'status': newStatus}) }}"
+																data-status="{{ glossario.status == 1 ? 'Inativar' : 'Ativar' }}">
+																<i class="fa fa-times-circle-o"></i>
+                                                                {{ glossario.status == 1 ? 'Inativar' : 'Ativar' }}
+															</a>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<!-- /Lista usuários -->
+					</div>
+				</div>
+				<!-- /dashboard content -->
+
+                {% include 'admin/basics/rodape.html.twig' %}
+
+			</div>
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+</div>
+<!-- /page container -->
+<script>
+    // Warning alert
+    $('.sweet_warning').on('click', function() {
+        swal({
+                title: $(this).data('title'),
+                text: $(this).data('text'),
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#ffa433",
+                confirmButtonText: "Sim, inativar!",
+                closeOnConfirm: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    window.location.href = "";
+                }
+            }
+		);
+    });
+</script>
+</body>
+</html>

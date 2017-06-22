@@ -11,15 +11,15 @@ namespace PlantasBr\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categorias extends Model
+class Continentes extends Model
 {
     //desabilita tentativas de campos updated_at e created_at
     public $timestamps = false;
-    protected $table = 'categorias';
+    protected $table = 'continente';
 
     //mass assignment
     protected $fillable = [
-        'categoria',
+        'continente',
         'status'
     ];
 }

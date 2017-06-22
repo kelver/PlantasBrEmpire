@@ -117,7 +117,8 @@ class EspeciesSeeder extends AbstractSeed
         foreach(range(1,6) as $value){
             $data[] = [
                     'especie' => $faker->especiesName(),
-                    'imagem' => 'especie' . $value . '.jpg'
+                    'imagem' => 'especie' . $value . '.jpg',
+                    'status' => 1
                 ];
         }
         $categorias->insert($data)->save();
