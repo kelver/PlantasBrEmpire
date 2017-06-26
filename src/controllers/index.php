@@ -11,6 +11,6 @@ $app
         $repository = $app->service('especies.repository');
 
         return $view->render('layout.html.twig', [
-            'especies' => $repository->all()
+            'especies' => $repository->allOutrasOpcoes('id', 'desc', 6)
         ]);
     }, 'index');

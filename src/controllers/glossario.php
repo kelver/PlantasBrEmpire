@@ -8,9 +8,11 @@
 $app
     ->get('/glossario', function() use ($app){
         $view = $app->service('view.renderer');
-        $repository = $app->service('especies.repository');
+        $repositoryEspecies = $app->service('especies.repository');
+        $repositoryGlossario = $app->service('glossarios.repository');
 
         return $view->render('glossario.html.twig', [
-            'especies' => $repository->all()
+            'especies' => $repositoryEspecies->all(),
+            'glossarios' => $repositoryGlossario->all()
         ]);
     });

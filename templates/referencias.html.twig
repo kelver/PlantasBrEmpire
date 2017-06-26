@@ -72,30 +72,17 @@
 
                 <div class="col-md-12">
                     <div class="well well-sm">
-
-                    </div>
-                </div>
-
-                <div class="image-box style-3-b">
-                    <div class="row margin-clear">
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="shadow bordered">
-                                <img src="./assets/images/isolada_grande.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-8 col-lg-8">
-                            <div class="body">
-                                <h3 class="title"><a href="">Já conhece essa espécie?</a></h3>
-                                <p class="small mb-10"><i class="pl-10 icon-tag-1"></i> <strong>Nome científico:</strong> Mimosa scabrella Benth. </p>
-                                <div class="separator-2"></div>
-                                <p class="small mb-10"><i class="pl-10 icon-tag-1"></i> <strong>Nomes populares:</strong> bracatinga, bracatinga-amarela, abracatinga, anizeiro, bracatinga-branca, bracatinga-comum, bracatinga-vermelha, bracatinha, mandengo, maracatinga, paracatinga. </p>
-                                <div class="separator-2"></div>
-                                <p class="small mb-10"><i class="pl-10 icon-tag-1"></i> <strong>Resumo:</strong>  Árvore inerme de até 20 m de altura, com casca externa áspera ou com pequenas fissuras. Os ramos, folhas, flores e frutos possuem pubescência ferrugínea. Suas folhas são compostas, paripinadas, alternas, com 3 a 7 pares de pinas ... </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <a class="btn btn-default-transparent ol-sm-12 col-md-12 col-lg-12">Conheça melhor</a>
-                        </div>
+                        <table class="table table-hover table-bordered table-colored">
+                        {% for referencia in referencias %}
+                            <tr>
+                                <td>
+                                    <div class="col-md-12">{{ referencia.texto }}</div>
+                                    <div class="col-md-12"><a href="{{ referencia.link }}" target="_blank">{{ referencia.link }}</a></div>
+                                    <hr>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>

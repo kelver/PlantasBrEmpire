@@ -32,8 +32,25 @@ $app
             $data = $request->getParsedBody();
             $data['status'] = 1;
             $repository = $app->service('glossarios.repository');
-            $repository->create($data);
-            return $app->route('admin.glossarios.list');
+
+            if (!isset($_FILES['imagem'])) {
+                echo "Nenhum arquivo selecionado!!";
+                return;
+            }
+
+            $imgs = array();
+
+            $files = $_FILES['imagem'];
+            $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
+            if ($files['error'] === 0) {
+                if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/glossario/' . $name)) {
+                    $data['imagem'] = $name;
+                    $repository->create($data);
+                    return $app->route('admin.glossarios.list');
+                }else{
+                    return $app->route('admin.glossarios.new');
+                }
+            }
         }, 'admin.glossarios.store'
     )
     ->get('/admin/Glossarios/{id}/edit', function(ServerRequestInterface $request) use ($app){
@@ -52,6 +69,15 @@ $app
         $repository = $app->service('glossarios.repository');
         $id = $request->getAttribute('id');
         $data = $request->getParsedBody();
+
+        $imgs = array();
+        $files = $_FILES['imagem'];
+        $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
+        if ($files['error'] === 0) {
+            if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/glossario/' . $name)) {
+                $data['imagem'] = $name;
+            }
+        }
 
         $repository->update($id, $data);
         return $app->route('admin.glossarios.list');

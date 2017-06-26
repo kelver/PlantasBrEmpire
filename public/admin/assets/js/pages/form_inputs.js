@@ -22,4 +22,9 @@ $(function() {
 		fileButtonClass: 'action btn bg-blue'
 	});
 
+	// Primary file input
+	$(".file-styled-success").uniform({
+		fileButtonClass: 'action btn bg-green'
+	});
+
 });

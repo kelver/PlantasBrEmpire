@@ -20,6 +20,7 @@ use PlantasBr\Models\Glossario;
 use PlantasBr\Models\Origens;
 use PlantasBr\Models\Paises;
 use PlantasBr\Models\Pessoa;
+use PlantasBr\Models\Referencia;
 use PlantasBr\Models\TipoFolha;
 use PlantasBr\Repository\RepositoryFactory;
 use PlantasBr\ServiceContainerInterface;
@@ -43,6 +44,12 @@ class DbPlugin implements PluginInterface
         $container->addLazy('especies.repository', function(ContainerInterface $container){
             return $container->get('repository.factory')->factory(Especies::class);
         });
+        $container->addLazy('referencias.repository', function(ContainerInterface $container){
+            return $container->get('repository.factory')->factory(Referencia::class);
+        });
+        $container->addLazy('glossarios.repository', function(ContainerInterface $container){
+            return $container->get('repository.factory')->factory(Glossario::class);
+        });
 
         // repositórios admin
         $container->addLazy('user.repository', function (ContainerInterface $container) {
@@ -53,6 +60,9 @@ class DbPlugin implements PluginInterface
         });
         $container->addLazy('categorias.repository', function (ContainerInterface $container) {
             return $container->get('repository.factory')->factory(Categorias::class);
+        });
+        $container->addLazy('especies.repository', function (ContainerInterface $container) {
+            return $container->get('repository.factory')->factory(Especies::class);
         });
         $container->addLazy('continentes.repository', function (ContainerInterface $container) {
             return $container->get('repository.factory')->factory(Continentes::class);
@@ -71,6 +81,9 @@ class DbPlugin implements PluginInterface
         });
         $container->addLazy('glossarios.repository', function (ContainerInterface $container) {
             return $container->get('repository.factory')->factory(Glossario::class);
+        });
+        $container->addLazy('referencias.repository', function (ContainerInterface $container) {
+            return $container->get('repository.factory')->factory(Referencia::class);
         });
     }
 }

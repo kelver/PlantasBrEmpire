@@ -8,9 +8,11 @@
 $app
     ->get('/referencias', function() use ($app){
         $view = $app->service('view.renderer');
-        $repository = $app->service('especies.repository');
+        $repositoryEspecies = $app->service('especies.repository');
+        $repositoryReferencias = $app->service('referencias.repository');
 
         return $view->render('referencias.html.twig', [
-            'especies' => $repository->all()
+            'especies' => $repositoryEspecies->all(),
+            'referencias' => $repositoryReferencias->all()
         ]);
     });

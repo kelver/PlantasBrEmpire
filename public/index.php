@@ -42,6 +42,8 @@ require_once (__DIR__ . '/../src/controllers/admin/origens.php');
 require_once (__DIR__ . '/../src/controllers/admin/paises.php');
 require_once (__DIR__ . '/../src/controllers/admin/tipo-folha.php');
 require_once (__DIR__ . '/../src/controllers/admin/glossarios.php');
+require_once (__DIR__ . '/../src/controllers/admin/referencias.php');
+require_once (__DIR__ . '/../src/controllers/admin/especies.php');
 
 //    ->get('/home', function (ServerRequestInterface $request) use ($app){
 //        $view = $app->service('view.renderer');

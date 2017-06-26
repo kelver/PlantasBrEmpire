@@ -33,6 +33,25 @@ class DefaultRepository implements RepositoryInterface
         return $this->model->all()->toArray();
     }
 
+    public function allComLimit(int $limit): array
+    {
+        return $this->model->all()
+            ->take($limit)
+            ->toArray();
+    }
+
+    public function allOutrasOpcoes(string $orderByCampo = 'id', string $orderBySort = 'asc', int $limit = 0): array
+    {
+        ($orderBySort == 'desc') ?
+            $orderBySort = 'sortByDesc' : $orderBySort = 'sortBy';
+
+
+        return $this->model->all()
+            ->$orderBySort($orderByCampo)
+            ->take($limit)
+            ->toArray();
+    }
+
     public function create(array $data)
     {
         $this->model->fill($data);

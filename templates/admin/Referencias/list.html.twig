@@ -21,31 +21,29 @@
 						<!-- Lista usuários -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title col-md-10">Glossarios</h5>
-								<a href="{{ route('admin.glossarios.new') }}" class="btn btn-success btn-labeled"><b><i class="fa fa-plus"></i></b> Novo</a>
+								<h5 class="panel-title col-md-10">Referencias</h5>
+								<a href="{{ route('admin.referencias.new') }}" class="btn btn-success btn-labeled"><b><i class="fa fa-plus"></i></b> Novo</a>
 							</div>
 
 							<table class="table datatable-basic table-hover">
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>Glossario</th>
-										<th>Descrição</th>
-										<th>Imagem</th>
+										<th>Texto</th>
+										<th>Link</th>
 										<th>Status</th>
 										<th class="text-center"></th>
 									</tr>
 								</thead>
 								<tbody>
-								{% for glossario in glossarios %}
+								{% for referencia in referencias %}
 									<tr>
-										<td>{{ glossario.id }}</td>
-										<td>{{ glossario.nome }}</td>
-										<td>{{ glossario.descricao }}</td>
-										<td><img src="../assets/imagens/glossario/{{ glossario.imagem }}" height="50px" /></td>
+										<td>{{ referencia.id }}</td>
+										<td>{{ referencia.texto }}</td>
+										<td><a href="{{ referencia.link }}" >{{ referencia.link }}</a></td>
 										<td>
-											<span class="label label-{{ glossario.status == 1 ? 'success' : 'danger' }}">
-												{{ glossario.status == 1 ? 'Ativo' : 'Inativo' }}
+											<span class="label label-{{ referencia.status == 1 ? 'success' : 'danger' }}">
+												{{ referencia.status == 1 ? 'Ativo' : 'Inativo' }}
 											</span>
 										</td>
 										<td class="text-center">
@@ -55,15 +53,15 @@
 														<i class="icon-menu9"></i>
 													</a>
 
-                                                    {% set newStatus = glossario.status == 1 ? '0' : '1' %}
+                                                    {% set newStatus = referencia.status == 1 ? '0' : '1' %}
 													<ul class="dropdown-menu dropdown-menu-right">
-														<li><a href="{{ route('admin.glossarios.edit', {'id': glossario.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
-														<li><a class="sweet_warning" data-title="{{ glossario.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
-															   data-text="Realmente deseja {{ glossario.status == 1 ? 'inativar' : 'ativar' }} a glossario {{ glossario.glossario }}?"
-																data-rota="{{ route('admin.glossarios.status', {'id': glossario.id, 'status': newStatus}) }}"
-																data-status="{{ glossario.status == 1 ? 'Inativar' : 'Ativar' }}">
+														<li><a href="{{ route('admin.referencias.edit', {'id': referencia.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
+														<li><a class="sweet_warning" data-title="{{ referencia.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
+															   data-text="Realmente deseja {{ referencia.status == 1 ? 'inativar' : 'ativar' }} a referencia {{ referencia.referencia }}?"
+																data-rota="{{ route('admin.referencias.status', {'id': referencia.id, 'status': newStatus}) }}"
+																data-status="{{ referencia.status == 1 ? 'Inativar' : 'Ativar' }}">
 																<i class="fa fa-times-circle-o"></i>
-                                                                {{ glossario.status == 1 ? 'Inativar' : 'Ativar' }}
+                                                                {{ referencia.status == 1 ? 'Inativar' : 'Ativar' }}
 															</a>
 														</li>
 													</ul>
