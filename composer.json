@@ -22,5 +22,10 @@
     },
     "require-dev": {
         "fzaninotto/faker": "1.6.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "vendor/bin/phinx migrate"
+        ]
     }
 }
