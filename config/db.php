@@ -7,12 +7,12 @@
  */
 //mysql://b06ff4aebd980e:ec8e55a0@us-cdbr-iron-east-03.cleardb.net/heroku_a2c4859427bd568?reconnect=true
 return [
-    "development" => [
-        'driver' => 'mysql',
-        'host' => 'us-cdbr-iron-east-03.cleardb.net',
-        'database' => 'heroku_a2c4859427bd568',
-        'username' => 'b06ff4aebd980e',
-        'password' => 'ec8e55a0',
+    "default_connection" => [
+        'driver' => getenv('DB_DRIVER'),
+        'host' => getenv('DB_HOST'),
+        'database' => getenv('DB_DATABASE'),
+        'username' => getenv('DB_USERNAME'),
+        'password' => getenv('DB_PASSWORD'),
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci'
     ]

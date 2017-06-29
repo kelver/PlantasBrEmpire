@@ -8,19 +8,25 @@
 use Psr\Http\Message\ServerRequestInterface;
 
 $app
-    ->get('/admin/Tipo-Folha', function() use ($app){
-        $view = $app->service('view.renderer');
-        $auth = $app->service('auth');
-        $repositoryTipoFolha = $app->service('tipoFolha.repository');
-        $tipoFolha = $repositoryTipoFolha->all();
+    ->get(
+        '/admin/Tipo-Folha', function () use ($app) {
+            $view = $app->service('view.renderer');
+            $auth = $app->service('auth');
+            $repositoryTipoFolha = $app->service('tipoFolha.repository');
+            $tipoFolha = $repositoryTipoFolha->all();
 
-        return $view->render('/admin/TipoFolha/list.html.twig', [
-            'tipoFolha' => $tipoFolha
-        ]);
-    }, 'admin.tipoFolha.list')
-    ->get('/admin/Tipo-Folha/', function() use ($app){
-        return $app->route('admin.tipoFolha.list');
-    }, 'admin.tipoFolha.redirect')
+            return $view->render(
+                '/admin/TipoFolha/list.html.twig', [
+                'tipoFolha' => $tipoFolha
+                ]
+            );
+        }, 'admin.tipoFolha.list'
+    )
+    ->get(
+        '/admin/Tipo-Folha/', function () use ($app) {
+            return $app->route('admin.tipoFolha.list');
+        }, 'admin.tipoFolha.redirect'
+    )
     ->get(
         '/admin/Tipo-Folha/new', function () use ($app) {
             $view = $app->service('view.renderer');
@@ -36,33 +42,39 @@ $app
             return $app->route('admin.tipoFolha.list');
         }, 'admin.tipoFolha.store'
     )
-    ->get('/admin/Tipo-Folha/{id}/edit', function(ServerRequestInterface $request) use ($app){
-        $view = $app->service('view.renderer');
-        $id = $request->getAttribute('id');
-        $repository = $app->service('tipoFolha.repository');
-        $tipoFolha = $repository->findOneBy(
-            ['id' => $id]
-        );
-        return $view->render('/admin/TipoFolha/edit.html.twig', [
-            'tipoFolha' => $tipoFolha
-        ]);
-    }, 'admin.tipoFolha.edit')
+    ->get(
+        '/admin/Tipo-Folha/{id}/edit', function (ServerRequestInterface $request) use ($app) {
+            $view = $app->service('view.renderer');
+            $id = $request->getAttribute('id');
+            $repository = $app->service('tipoFolha.repository');
+            $tipoFolha = $repository->findOneBy(
+                ['id' => $id]
+            );
+            return $view->render(
+                '/admin/TipoFolha/edit.html.twig', [
+                'tipoFolha' => $tipoFolha
+                ]
+            );
+        }, 'admin.tipoFolha.edit'
+    )
     ->post(
         '/admin/Tipo-Folha/{id}/update', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('tipoFolha.repository');
-        $id = $request->getAttribute('id');
-        $data = $request->getParsedBody();
+            $repository = $app->service('tipoFolha.repository');
+            $id = $request->getAttribute('id');
+            $data = $request->getParsedBody();
 
-        $repository->update($id, $data);
-        return $app->route('admin.tipoFolha.list');
-    }, 'admin.tipoFolha.update')
+            $repository->update($id, $data);
+            return $app->route('admin.tipoFolha.list');
+        }, 'admin.tipoFolha.update'
+    )
     ->get(
         '/admin/Tipo-Folha/{id}/status/{status}', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('tipoFolha.repository');
-        $id = $request->getAttribute('id');
-        $data = ['status' => $request->getAttribute('status')];
-        $repository->update($id, $data);
+            $repository = $app->service('tipoFolha.repository');
+            $id = $request->getAttribute('id');
+            $data = ['status' => $request->getAttribute('status')];
+            $repository->update($id, $data);
 
-        return $app->route('admin.tipoFolha.list');
-    }, 'admin.tipoFolha.status');
+            return $app->route('admin.tipoFolha.list');
+        }, 'admin.tipoFolha.status'
+    );
 

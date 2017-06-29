@@ -8,19 +8,25 @@
 use Psr\Http\Message\ServerRequestInterface;
 
 $app
-    ->get('/admin/Glossarios', function() use ($app){
-        $view = $app->service('view.renderer');
-        $auth = $app->service('auth');
-        $repositoryGlossario = $app->service('glossarios.repository');
-        $glossarios = $repositoryGlossario->all();
+    ->get(
+        '/admin/Glossarios', function () use ($app) {
+            $view = $app->service('view.renderer');
+            $auth = $app->service('auth');
+            $repositoryGlossario = $app->service('glossarios.repository');
+            $glossarios = $repositoryGlossario->all();
 
-        return $view->render('/admin/Glossarios/list.html.twig', [
-            'glossarios' => $glossarios
-        ]);
-    }, 'admin.glossarios.list')
-    ->get('/admin/Glossarios/', function() use ($app){
-        return $app->route('admin.glossarios.list');
-    }, 'admin.glossarios.redirect')
+            return $view->render(
+                '/admin/Glossarios/list.html.twig', [
+                'glossarios' => $glossarios
+                ]
+            );
+        }, 'admin.glossarios.list'
+    )
+    ->get(
+        '/admin/Glossarios/', function () use ($app) {
+            return $app->route('admin.glossarios.list');
+        }, 'admin.glossarios.redirect'
+    )
     ->get(
         '/admin/Glossarios/new', function () use ($app) {
             $view = $app->service('view.renderer');
@@ -53,42 +59,48 @@ $app
             }
         }, 'admin.glossarios.store'
     )
-    ->get('/admin/Glossarios/{id}/edit', function(ServerRequestInterface $request) use ($app){
-        $view = $app->service('view.renderer');
-        $id = $request->getAttribute('id');
-        $repository = $app->service('glossarios.repository');
-        $glossarios = $repository->findOneBy(
-            ['id' => $id]
-        );
-        return $view->render('/admin/Glossarios/edit.html.twig', [
-            'glossarios' => $glossarios
-        ]);
-    }, 'admin.glossarios.edit')
+    ->get(
+        '/admin/Glossarios/{id}/edit', function (ServerRequestInterface $request) use ($app) {
+            $view = $app->service('view.renderer');
+            $id = $request->getAttribute('id');
+            $repository = $app->service('glossarios.repository');
+            $glossarios = $repository->findOneBy(
+                ['id' => $id]
+            );
+            return $view->render(
+                '/admin/Glossarios/edit.html.twig', [
+                'glossarios' => $glossarios
+                ]
+            );
+        }, 'admin.glossarios.edit'
+    )
     ->post(
         '/admin/Glossarios/{id}/update', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('glossarios.repository');
-        $id = $request->getAttribute('id');
-        $data = $request->getParsedBody();
+            $repository = $app->service('glossarios.repository');
+            $id = $request->getAttribute('id');
+            $data = $request->getParsedBody();
 
-        $imgs = array();
-        $files = $_FILES['imagem'];
-        $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
-        if ($files['error'] === 0) {
-            if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/glossario/' . $name)) {
-                $data['imagem'] = $name;
+            $imgs = array();
+            $files = $_FILES['imagem'];
+            $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
+            if ($files['error'] === 0) {
+                if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/glossario/' . $name)) {
+                    $data['imagem'] = $name;
+                }
             }
-        }
 
-        $repository->update($id, $data);
-        return $app->route('admin.glossarios.list');
-    }, 'admin.glossarios.update')
+            $repository->update($id, $data);
+            return $app->route('admin.glossarios.list');
+        }, 'admin.glossarios.update'
+    )
     ->get(
         '/admin/Glossarios/{id}/status/{status}', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('glossarios.repository');
-        $id = $request->getAttribute('id');
-        $data = ['status' => $request->getAttribute('status')];
-        $repository->update($id, $data);
+            $repository = $app->service('glossarios.repository');
+            $id = $request->getAttribute('id');
+            $data = ['status' => $request->getAttribute('status')];
+            $repository->update($id, $data);
 
-        return $app->route('admin.glossarios.list');
-    }, 'admin.glossarios.status');
+            return $app->route('admin.glossarios.list');
+        }, 'admin.glossarios.status'
+    );
 

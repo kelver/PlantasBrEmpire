@@ -6,11 +6,15 @@
  * Time: 15:59
  */
 $app
-    ->get('/', function() use ($app){
-        $view = $app->service('view.renderer');
-        $repository = $app->service('especies.repository');
+    ->get(
+        '/', function () use ($app) {
+            $view = $app->service('view.renderer');
+            $repository = $app->service('especies.repository');
 
-        return $view->render('layout.html.twig', [
-            'especies' => $repository->allOutrasOpcoes('id', 'desc', 6)
-        ]);
-    }, 'index');
+            return $view->render(
+                'layout.html.twig', [
+                'especies' => $repository->allOutrasOpcoes('id', 'desc', 6)
+                ]
+            );
+        }, 'index'
+    );

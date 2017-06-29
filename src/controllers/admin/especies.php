@@ -8,19 +8,25 @@
 use Psr\Http\Message\ServerRequestInterface;
 
 $app
-    ->get('/admin/Especies', function() use ($app){
-        $view = $app->service('view.renderer');
-        $auth = $app->service('auth');
-        $repositoryEspecie = $app->service('especies.repository');
-        $especies = $repositoryEspecie->all();
+    ->get(
+        '/admin/Especies', function () use ($app) {
+            $view = $app->service('view.renderer');
+            $auth = $app->service('auth');
+            $repositoryEspecie = $app->service('especies.repository');
+            $especies = $repositoryEspecie->all();
 
-        return $view->render('/admin/Especies/list.html.twig', [
-            'especies' => $especies
-        ]);
-    }, 'admin.especies.list')
-    ->get('/admin/Especies/', function() use ($app){
-        return $app->route('admin.especies.list');
-    }, 'admin.especies.redirect')
+            return $view->render(
+                '/admin/Especies/list.html.twig', [
+                'especies' => $especies
+                ]
+            );
+        }, 'admin.especies.list'
+    )
+    ->get(
+        '/admin/Especies/', function () use ($app) {
+            return $app->route('admin.especies.list');
+        }, 'admin.especies.redirect'
+    )
     ->get(
         '/admin/Especies/new', function () use ($app) {
             $view = $app->service('view.renderer');
@@ -53,42 +59,48 @@ $app
             }
         }, 'admin.especies.store'
     )
-    ->get('/admin/Especies/{id}/edit', function(ServerRequestInterface $request) use ($app){
-        $view = $app->service('view.renderer');
-        $id = $request->getAttribute('id');
-        $repository = $app->service('especies.repository');
-        $especies = $repository->findOneBy(
-            ['id' => $id]
-        );
-        return $view->render('/admin/Especies/edit.html.twig', [
-            'especies' => $especies
-        ]);
-    }, 'admin.especies.edit')
+    ->get(
+        '/admin/Especies/{id}/edit', function (ServerRequestInterface $request) use ($app) {
+            $view = $app->service('view.renderer');
+            $id = $request->getAttribute('id');
+            $repository = $app->service('especies.repository');
+            $especies = $repository->findOneBy(
+                ['id' => $id]
+            );
+            return $view->render(
+                '/admin/Especies/edit.html.twig', [
+                'especies' => $especies
+                ]
+            );
+        }, 'admin.especies.edit'
+    )
     ->post(
         '/admin/Especies/{id}/update', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('especies.repository');
-        $id = $request->getAttribute('id');
-        $data = $request->getParsedBody();
+            $repository = $app->service('especies.repository');
+            $id = $request->getAttribute('id');
+            $data = $request->getParsedBody();
 
-        $imgs = array();
-        $files = $_FILES['imagem'];
-        $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
-        if ($files['error'] === 0) {
-            if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/especies/' . $name)) {
-                $data['imagem'] = $name;
+            $imgs = array();
+            $files = $_FILES['imagem'];
+            $name = uniqid('img-'.date('Ymd').'-') . '.' . end(explode(".", $files['name']));
+            if ($files['error'] === 0) {
+                if (move_uploaded_file($files['tmp_name'], __DIR__ . '/../../../public/assets/imagens/especies/' . $name)) {
+                    $data['imagem'] = $name;
+                }
             }
-        }
 
-        $repository->update($id, $data);
-        return $app->route('admin.especies.list');
-    }, 'admin.especies.update')
+            $repository->update($id, $data);
+            return $app->route('admin.especies.list');
+        }, 'admin.especies.update'
+    )
     ->get(
         '/admin/Especies/{id}/status/{status}', function (ServerRequestInterface $request) use ($app) {
-        $repository = $app->service('especies.repository');
-        $id = $request->getAttribute('id');
-        $data = ['status' => $request->getAttribute('status')];
-        $repository->update($id, $data);
+            $repository = $app->service('especies.repository');
+            $id = $request->getAttribute('id');
+            $data = ['status' => $request->getAttribute('status')];
+            $repository->update($id, $data);
 
-        return $app->route('admin.especies.list');
-    }, 'admin.especies.status');
+            return $app->route('admin.especies.list');
+        }, 'admin.especies.status'
+    );
 

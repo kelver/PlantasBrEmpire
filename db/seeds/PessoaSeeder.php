@@ -9,11 +9,11 @@ class PessoaSeeder extends AbstractSeed
         $faker = \Faker\Factory::create('pt_BR');
         $pessoa = $this->table('pessoa');
 
-        $pessoa->insert([
+        /*$pessoa->insert([
             'nome' => 'Kelver',
             'email' => $faker->email,
             'telefone' => $faker->phoneNumber
-        ])->save();
+        ])->save();*/
 
         $data = [];
 

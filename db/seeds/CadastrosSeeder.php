@@ -20,7 +20,7 @@ class CadastrosSeeder extends AbstractSeed
         $faker = \Faker\Factory::create('pt_BR');
         $cadastros = $this->table('cadastro');
 
-        $cadastros->insert([
+        /*$cadastros->insert([
             'usuario' => 'kelver',
             'senha' => $auth->hashPassword('123456'),
             'primeiro_acesso' => date('Y-m-d H:i:s'),
@@ -28,7 +28,7 @@ class CadastrosSeeder extends AbstractSeed
             'status' => 1,
             'idPessoa' => 1,
             'tipo' => 0 // 0 usuario comum, 1 usuário adm
-        ])->save();
+        ])->save();*/
 
         $cadastros->insert([
             'usuario' => 'kelver2',
