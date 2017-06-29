@@ -9,6 +9,7 @@ class CreatePessoaUserAdminData extends AbstractMigration
         $pessoa = $this->table('pessoa');
 
         $pessoa->insert([
+            'id' => 1,
             'nome' => 'Kelver',
             'email' => 'kelver_kmv@hotmail.com',
             'telefone' => '65 99245-3503'
