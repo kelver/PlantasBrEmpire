@@ -9,6 +9,7 @@ class CreateUserAdminData extends AbstractMigration
        $app = require __DIR__ . '/../bootstrap.php';
        $auth = $app->service('auth');
        $idPessoa = $this->execute("select id from pessoa");
+       $idPessoa = $idPessoa->fetch(\PDO::FETCH_OBJ);
 
        $cadastros = $this->table('cadastro');
         $cadastros->insert([
@@ -17,7 +18,7 @@ class CreateUserAdminData extends AbstractMigration
             'primeiro_acesso' => date('Y-m-d H:i:s'),
             'ultimo_acesso' => date('Y-m-d H:i:s'),
             'status' => 1,
-            'idPessoa' => $idPessoa,
+            'idPessoa' => $idPessoa->id,
             'tipo' => 0 // 0 usuario comum, 1 usuário adm
         ])->save();
    }
