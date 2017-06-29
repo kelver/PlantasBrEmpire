@@ -6,9 +6,9 @@ class AddFkPessoaToCadastro extends AbstractMigration
 {
     public function up()
     {
-        $this->table('cadastro')
-            ->addForeignKey('idPessoa', 'pessoa', 'id')
-            ->save();
+//        $this->table('cadastro')
+//            ->addForeignKey('idPessoa', 'pessoa', 'id')
+//            ->save();
     }
 
     public function down()
