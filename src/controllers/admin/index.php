@@ -12,9 +12,9 @@ $app
             return $view->render('/admin/index.html.twig');
         }, 'admin.index'
     )
-    ->get(
-        '/admin', function () use ($app) {
-            return $app->route('admin.index');
-        }, 'admin.index.redirect'
+//    ->get(
+//        '/admin', function () use ($app) {
+//            return $app->route('admin.index');
+//        }, 'admin.index.redirect'
     );
 
