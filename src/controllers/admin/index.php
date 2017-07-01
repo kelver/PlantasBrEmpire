@@ -11,7 +11,7 @@ $app
             $view = $app->service('view.renderer');
             return $view->render('/admin/index.html.twig');
         }, 'admin.index'
-    )
+//    )
 //    ->get(
 //        '/admin', function () use ($app) {
 //            return $app->route('admin.index');
