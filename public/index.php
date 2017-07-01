@@ -36,18 +36,18 @@ require_once (__DIR__ . '/../src/controllers/referencias.php');
 require_once (__DIR__ . '/../src/controllers/contato.php');
 
 // Rotas Administrativas
-require_once (__DIR__ . '/../src/controllers/admin/auth.php');
-require_once (__DIR__ . '/../src/controllers/admin/index.php');
-require_once (__DIR__ . '/../src/controllers/admin/cadastros.php');
-require_once (__DIR__ . '/../src/controllers/admin/categorias.php');
-require_once (__DIR__ . '/../src/controllers/admin/continentes.php');
-require_once (__DIR__ . '/../src/controllers/admin/generos.php');
-require_once (__DIR__ . '/../src/controllers/admin/origens.php');
-require_once (__DIR__ . '/../src/controllers/admin/paises.php');
-require_once (__DIR__ . '/../src/controllers/admin/tipo-folha.php');
-require_once (__DIR__ . '/../src/controllers/admin/glossarios.php');
-require_once (__DIR__ . '/../src/controllers/admin/referencias.php');
-require_once (__DIR__ . '/../src/controllers/admin/especies.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/auth.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/index.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/cadastros.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/categorias.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/continentes.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/generos.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/origens.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/paises.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/tipo-folha.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/glossarios.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/referencias.php');
+require_once (__DIR__ . '/../src/controllers/js/admin/especies.php');
 
 //    ->get('/home', function (ServerRequestInterface $request) use ($app){
 //        $view = $app->service('view.renderer');
