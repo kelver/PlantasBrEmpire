@@ -7,7 +7,7 @@
  */
 $app
     ->get(
-        '/admin/', function () use ($app) {
+        '/admin', function () use ($app) {
             $view = $app->service('view.renderer');
             return $view->render('/admin/index.html.twig');
         }, 'admin.index'
