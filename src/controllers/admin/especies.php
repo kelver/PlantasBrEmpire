@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Especies/list.html.twig', [
-                'especies' => $especies
+                    'especies' => $especies,
+                    'menu' => 'especies'
                 ]
             );
         }, 'admin.especies.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Especies/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Especies/create.html.twig');
+            return $view->render('admin/Especies/create.html.twig', [
+                'menu' => 'especies'
+            ]);
         }, 'admin.especies.new'
     )
     ->post(
@@ -69,7 +72,8 @@ $app
             );
             return $view->render(
                 '/admin/Especies/edit.html.twig', [
-                'especies' => $especies
+                    'especies' => $especies,
+                    'menu' => 'continentes'
                 ]
             );
         }, 'admin.especies.edit'

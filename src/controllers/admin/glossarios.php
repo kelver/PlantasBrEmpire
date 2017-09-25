@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Glossarios/list.html.twig', [
-                'glossarios' => $glossarios
+                    'glossarios' => $glossarios,
+                    'menu' => 'glossarios'
                 ]
             );
         }, 'admin.glossarios.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Glossarios/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Glossarios/create.html.twig');
+            return $view->render('admin/Glossarios/create.html.twig', [
+                'menu' => 'glossarios'
+            ]);
         }, 'admin.glossarios.new'
     )
     ->post(
@@ -69,7 +72,8 @@ $app
             );
             return $view->render(
                 '/admin/Glossarios/edit.html.twig', [
-                'glossarios' => $glossarios
+                    'glossarios' => $glossarios,
+                    'menu' => 'continentes'
                 ]
             );
         }, 'admin.glossarios.edit'

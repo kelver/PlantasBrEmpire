@@ -39,6 +39,7 @@ require_once (__DIR__ . '/../src/controllers/contato.php');
 require_once (__DIR__ . '/../src/controllers/admin/auth.php');
 require_once (__DIR__ . '/../src/controllers/admin/index.php');
 require_once (__DIR__ . '/../src/controllers/admin/cadastros.php');
+require_once (__DIR__ . '/../src/controllers/admin/plantas.php');
 require_once (__DIR__ . '/../src/controllers/admin/categorias.php');
 require_once (__DIR__ . '/../src/controllers/admin/continentes.php');
 require_once (__DIR__ . '/../src/controllers/admin/generos.php');

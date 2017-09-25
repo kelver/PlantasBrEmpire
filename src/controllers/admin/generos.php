@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Generos/list.html.twig', [
-                'generos' => $generos
+                    'generos' => $generos,
+                    'menu' => 'generos'
                 ]
             );
         }, 'admin.generos.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Generos/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Generos/create.html.twig');
+            return $view->render('admin/Generos/create.html.twig', [
+                'menu' => 'generos'
+            ]);
         }, 'admin.generos.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/Generos/edit.html.twig', [
-                'generos' => $generos
+                    'generos' => $generos,
+                    'menu' => 'continentes'
                 ]
             );
         }, 'admin.generos.edit'

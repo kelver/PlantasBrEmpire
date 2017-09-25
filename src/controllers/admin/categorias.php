@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Categorias/list.html.twig', [
-                'categorias' => $categorias
+                    'categorias' => $categorias,
+                    'menu' => 'categorias'
                 ]
             );
         }, 'admin.categorias.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Categorias/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Categorias/create.html.twig');
+            return $view->render('admin/Categorias/create.html.twig', [
+                'menu' => 'categorias'
+            ]);
         }, 'admin.categorias.new'
     )
     ->post(
@@ -52,7 +55,9 @@ $app
             );
             return $view->render(
                 '/admin/Categorias/edit.html.twig', [
-                'categorias' => $categorias
+                    'categorias' => $categorias, [
+                        'menu' => 'categorias'
+                    ]
                 ]
             );
         }, 'admin.categorias.edit'

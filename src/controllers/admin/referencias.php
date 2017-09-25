@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Referencias/list.html.twig', [
-                'referencias' => $referencias
+                    'referencias' => $referencias,
+                    'menu' => 'referencias'
                 ]
             );
         }, 'admin.referencias.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Referencias/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Referencias/create.html.twig');
+            return $view->render('admin/Referencias/create.html.twig', [
+                'menu' => 'referencias'
+            ]);
         }, 'admin.referencias.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/Referencias/edit.html.twig', [
-                'referencias' => $referencias
+                    'referencias' => $referencias,
+                    'menu' => 'referencias'
                 ]
             );
         }, 'admin.referencias.edit'

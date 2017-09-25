@@ -9,44 +9,44 @@ use Psr\Http\Message\ServerRequestInterface;
 
 $app
     ->get(
-        '/admin/Cadastros', function () use ($app) {
+        '/admin/Plantas', function () use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
             $repositoryCadastro = $app->service('user.repository');
-            $cadastros = $repositoryCadastro->findByField('tipo', '0');
+            $plantas = $repositoryCadastro->findByField('tipo', '0');
 
             return $view->render(
-                '/admin/Cadastros/list.html.twig', [
-                    'cadastros' => $cadastros,
-                    'menu' => 'cadastros'
+                '/admin/Plantas/list.html.twig', [
+                    'plantas' => $plantas,
+                    'menu' => 'plantas'
                 ]
             );
-        }, 'admin.cadastros.list'
+        }, 'admin.plantas.list'
     )
     ->get(
-        '/admin/Cadastros/', function () use ($app) {
-            return $app->route('admin.cadastros.list');
-        }, 'admin.cadastros.redirect'
+        '/admin/Plantas/', function () use ($app) {
+            return $app->route('admin.plantas.list');
+        }, 'admin.plantas.redirect'
     )
     ->get(
-        '/admin/Cadastros/{id}/edit', function (ServerRequestInterface $request) use ($app) {
+        '/admin/Plantas/{id}/edit', function (ServerRequestInterface $request) use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
             $id = $request->getAttribute('id');
             $repositoryCadastro = $app->service('user.repository');
-            $cadastros = $repositoryCadastro->findOneBy(
+            $plantas = $repositoryCadastro->findOneBy(
                 ['id' => $id]
             );
             return $view->render(
-                '/admin/Cadastros/edit.html.twig', [
-                    'cadastros' => $cadastros,
-                    'menu' => 'cadastros'
+                '/admin/Plantas/edit.html.twig', [
+                    'plantas' => $plantas,
+                    'menu' => 'plantas'
                 ]
             );
-        }, 'admin.cadastros.edit'
+        }, 'admin.plantas.edit'
     )
     ->post(
-        '/admin/Cadastros/{id}/update', function (ServerRequestInterface $request) use ($app) {
+        '/admin/Plantas/{id}/update', function (ServerRequestInterface $request) use ($app) {
             $auth = $app->service('auth');
             $repositoryPessoa = $app->service('pessoa.repository');
             $repositoryCadastro = $app->service('user.repository');
@@ -60,18 +60,18 @@ $app
             $repositoryCadastro->update($idCadastro, $dataCadastro);
 
             $repositoryPessoa->update($idPessoa, $dataPessoa);
-            return $app->route('admin.cadastros.list');
-        }, 'admin.cadastros.update'
+            return $app->route('admin.plantas.list');
+        }, 'admin.plantas.update'
     )
     ->get(
-        '/admin/Cadastros/{id}/status/{status}', function (ServerRequestInterface $request) use ($app) {
+        '/admin/Plantas/{id}/status/{status}', function (ServerRequestInterface $request) use ($app) {
             $auth = $app->service('auth');
             $repositoryCadastro = $app->service('user.repository');
             $idCadastro = $request->getAttribute('id');
             $dataStatus = ['status' => $request->getAttribute('status')];
             $repositoryCadastro->update($idCadastro, $dataStatus);
 
-            return $app->route('admin.cadastros.list');
-        }, 'admin.cadastros.status'
+            return $app->route('admin.plantas.list');
+        }, 'admin.plantas.status'
     );
 

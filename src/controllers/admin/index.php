@@ -9,7 +9,9 @@ $app
     ->get(
         '/admin', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('/admin/index.html.twig');
+            return $view->render('/admin/index.html.twig', [
+                'menu' => 'index'
+            ]);
         }, 'admin.index'
 //    )
 //    ->get(

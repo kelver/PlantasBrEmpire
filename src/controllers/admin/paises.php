@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Paises/list.html.twig', [
-                'paises' => $paises
+                    'paises' => $paises,
+                    'menu' => 'paises'
                 ]
             );
         }, 'admin.paises.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Paises/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Paises/create.html.twig');
+            return $view->render('admin/Paises/create.html.twig', [
+                'menu' => 'paises'
+            ]);
         }, 'admin.paises.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/Paises/edit.html.twig', [
-                'paises' => $paises
+                    'paises' => $paises,
+                    'menu' => 'paises'
                 ]
             );
         }, 'admin.paises.edit'

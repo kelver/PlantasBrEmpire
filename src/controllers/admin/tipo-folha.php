@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/TipoFolha/list.html.twig', [
-                'tipoFolha' => $tipoFolha
+                    'tipoFolha' => $tipoFolha,
+                    'menu' => 'tipoFolha'
                 ]
             );
         }, 'admin.tipoFolha.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Tipo-Folha/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/TipoFolha/create.html.twig');
+            return $view->render('admin/TipoFolha/create.html.twig', [
+                'menu' => 'tipoFolha'
+            ]);
         }, 'admin.tipoFolha.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/TipoFolha/edit.html.twig', [
-                'tipoFolha' => $tipoFolha
+                    'tipoFolha' => $tipoFolha,
+                    'menu' => 'tipoFolha'
                 ]
             );
         }, 'admin.tipoFolha.edit'

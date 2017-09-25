@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Origens/list.html.twig', [
-                'origens' => $origens
+                    'origens' => $origens,
+                    'menu' => 'origens'
                 ]
             );
         }, 'admin.origens.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Origens/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Origens/create.html.twig');
+            return $view->render('admin/Origens/create.html.twig', [
+                'menu' => 'origens'
+            ]);
         }, 'admin.origens.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/Origens/edit.html.twig', [
-                'origens' => $origens
+                    'origens' => $origens,
+                    'menu' => 'origens'
                 ]
             );
         }, 'admin.origens.edit'

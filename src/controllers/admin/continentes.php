@@ -17,7 +17,8 @@ $app
 
             return $view->render(
                 '/admin/Continentes/list.html.twig', [
-                'continentes' => $continentes
+                    'continentes' => $continentes,
+                    'menu' => 'continentes'
                 ]
             );
         }, 'admin.continentes.list'
@@ -30,7 +31,9 @@ $app
     ->get(
         '/admin/Continentes/new', function () use ($app) {
             $view = $app->service('view.renderer');
-            return $view->render('admin/Continentes/create.html.twig');
+            return $view->render('admin/Continentes/create.html.twig', [
+                'menu' => 'continentes'
+            ]);
         }, 'admin.continentes.new'
     )
     ->post(
@@ -52,7 +55,8 @@ $app
             );
             return $view->render(
                 '/admin/Continentes/edit.html.twig', [
-                'continentes' => $continentes
+                    'continentes' => $continentes,
+                    'menu' => 'continentes'
                 ]
             );
         }, 'admin.continentes.edit'
