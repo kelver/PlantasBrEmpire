@@ -87,3 +87,8 @@
     </div>
 </aside>
 <!-- sidebar end -->
+{% if not Auth.check() %}
+    <div class="main col-md-6 col-lg-6">
+{% else %}
+    <div class="main col-md-9 col-lg-9">
+{% endif %}

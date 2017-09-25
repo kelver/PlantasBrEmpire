@@ -11,16 +11,448 @@
             {% include 'basics/lateralL.html.twig' %}
             <!-- main start -->
             <!-- ================ -->
-            <div class="main col-md-6 col-lg-6">
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h3 class="page-title">Sibol</h3>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
 
-                <div class="col-md-12">
-                    <div class="well well-sm">
+                <div class="row">
+                    <!-- main start -->
+                    <!-- ================ -->
+                    <div class="main object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                        <div class="center-block p-20 light-gray-bg border-clear">
+                            <h2 class="title">SIBOL <small>(Sistema de Identificação Botânica Online)</small></h2>
 
+                            {% if not Auth.check() %}
+                                <div class="row" style="padding: 0 20px;">
+                                    <div class="notice notice-danger">
+                                        <strong><i class="fa fa-exclamation-triangle"></i></strong> Para utilizar o
+                                        <strong>SIBOL</strong>, faça login em nosso sistema.
+                                    </div>
+                                </div>
+                            {% else %}
+                            <form class="form-horizontal" role="form">
+                                <div class="panel-body">
+                                    <fieldset class="col-md-12">
+                                        <legend>Forma de Vida</legend>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <select name="recrutador" form="recrutador" style="min-width:100%">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                    <fieldset class="col-md-12">
+                                        <legend>Aspecto Foliar</legend>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-body col-md-6">
+                                                <label>Tipo de Folha</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Filotaxia</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Forma</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Margem</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Ápice</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Base</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Nervação</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Consistência</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Pilosidade</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Caracteres Especiais</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="col-md-12">
+                                        <legend>Aspecto da Flor</legend>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-body col-md-6">
+                                                <label>Cor da Flor</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Disposição</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Plano de Simetria</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Cálice</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Corola</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Forma da Corola</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Perianto</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Estames</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="col-md-12">
+                                        <legend>Aspecto do Fruto</legend>
+                                        <div class="panel panel-default">
+                                            <div class="panel-body col-md-6">
+                                                <label>Tipo de Fruto</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Cor do Fruto</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="col-md-12">
+                                        <legend>Aspecto da Casca <small>(apenas para identificação de Árvores)</small></legend>
+                                        <div class="panel panel-default">
+                                            <div class="panel-body col-md-6">
+                                                <label>Aparência</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Deiscência</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Textura interna</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Cor interna</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                            <div class="panel-body col-md-6">
+                                                <label>Caractes especiais</label>
+                                                <select name="recrutador" form="recrutador">
+                                                    <option>----</option>
+                                                    <option>Herbácea</option>
+                                                    <option>Subarbusto</option>
+                                                    <option>Arbusto</option>
+                                                    <option>Árvore</option>
+                                                    <option>Trepadeira/Liana/Volúvel</option>
+                                                    <option>Suculenta</option>
+                                                    <option>Palmeira</option>
+                                                    <option>Bambusóide</option>
+                                                    <option>Dracenóide</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

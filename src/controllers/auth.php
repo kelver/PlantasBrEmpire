@@ -45,10 +45,8 @@ $app->before(
     function (ServerRequestInterface $request) use ($app) {
         $route = $app->service('route');
         $auth = $app->service('auth');
-        $routesWhiteList = [
-            'auth.show_login_form',
-            'auth.login',
-            'auth.logout'
+        $routesBlackList = [
+
         ];
 
         $routesWhiteListAdmin = [
@@ -58,7 +56,7 @@ $app->before(
         ];
         $rotaLocal = explode('.', $route->name);
         if($rotaLocal[0] != 'admin') {
-            if (!in_array($route->name, $routesWhiteList) && (!$auth->check() || !$auth->is('user'))) {
+            if (in_array($route->name, $routesBlackList) && (!$auth->check() || !$auth->is('user'))) {
                 return $app->route('auth.show_login_form');
             }
         }else{

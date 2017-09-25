@@ -11,18 +11,26 @@
             {% include 'basics/lateralL.html.twig' %}
             <!-- main start -->
             <!-- ================ -->
-            <div class="main col-md-6 col-lg-6">
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h3 class="page-title">Recrutador</h3>
+                <h2 class="page-title">Recrutador</h2>
                 <div class="separator-2"></div>
                 <!-- page-title end -->
 
+                {% if not Auth.check() %}
+                <div class="row" style="padding: 0 20px;">
+                    <div class="notice notice-danger">
+                        <strong><i class="fa fa-exclamation-triangle"></i></strong> Para utilizar o
+                        <strong>RECRUTADOR</strong>, faça login em nosso sistema.
+                    </div>
+                </div>
+                {% else %}
                 <div class="col-md-12">
                     <div class="well well-sm">
 
                     </div>
                 </div>
+                {% endif %}
             </div>
             <!-- main end -->
             {% include 'basics/lateralD.html.twig' %}

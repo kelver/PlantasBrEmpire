@@ -63,13 +63,13 @@
                             <!-- ================ -->
                             <div class="header-top-dropdown text-right">
                                 <div class="btn-group">
-                                    <a href="cadastro.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Assinar</a>
+                                    <a href="cadastro" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Assinar</a>
                                 </div>
                                 <div class="btn-group dropdown">
                                     <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Acesso</button>
                                     <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                         <li>
-                                            <form class="login-form margin-clear">
+                                            <form class="login-form margin-clear" method="post" action="{{ route('auth.login') }}">
                                                 <div class="form-group has-feedback">
                                                     <label class="control-label">Usuário</label>
                                                     <input type="text" class="form-control" name="usuario" id="usuario" placeholder="">

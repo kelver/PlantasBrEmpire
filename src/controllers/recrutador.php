@@ -16,5 +16,5 @@ $app
                 'especies' => $repository->all()
                 ]
             );
-        }
+        }, 'recrutador'
     );

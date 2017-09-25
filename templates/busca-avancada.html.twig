@@ -11,16 +11,65 @@
             {% include 'basics/lateralL.html.twig' %}
             <!-- main start -->
             <!-- ================ -->
-            <div class="main col-md-6 col-lg-6">
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h3 class="page-title">Busca Avançada</h3>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
 
-                <div class="col-md-12">
-                    <div class="well well-sm">
+                <div class="row">
+                    <!-- main start -->
+                    <!-- ================ -->
+                    <div class="main object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                        <div class="center-block p-20 light-gray-bg border-clear">
+                            <h2 class="title">Busca Avançada </h2>
 
+                            {% if not Auth.check() %}
+                                <div class="row" style="padding: 0 20px;">
+                                    <div class="notice notice-danger">
+                                        <strong><i class="fa fa-exclamation-triangle"></i></strong> Para utilizar a
+                                        <strong>BUSCA AVANÇADA</strong>, faça login em nosso sistema.
+                                    </div>
+                                </div>
+                            {% else %}
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group has-feedback">
+                                    <div class="col-sm-12">
+                                        <label>Família</label>
+                                        <input class="form-control" id="familia" name="familia" placeholder="Família" required="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="col-sm-12">
+                                        <label>Nome Científico</label>
+                                        <input class="form-control" id="nome-cientifico" name="nome-cientifico" placeholder="Nome Científico" required="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Gênero</label>
+                                        <input class="form-control" id="genero" name="genero" placeholder="Gênero" required="" type="email">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Espécie</label>
+                                        <input class="form-control" id="especie" name="especie" placeholder="Espécie" required="" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Nome Popular</label>
+                                        <input class="form-control" id="nome-popular" name="nome-popular" placeholder="Nome Popular" required="" type="email">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>Sinonímia</label>
+                                        <input class="form-control" id="sinonimia" name="sinonimia" placeholder="Sinonímia" required="" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-group btn-default btn-animated pull-right">Buscar <i class="fa fa-check"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

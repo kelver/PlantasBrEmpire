@@ -12,9 +12,7 @@ $app
             $repository = $app->service('especies.repository');
 
             return $view->render(
-                'sibol.html.twig', [
-                'especies' => $repository->all()
-                ]
+                'sibol.html.twig', []
             );
-        }
+        }, 'sibol'
     );

@@ -15,7 +15,7 @@ class CreatePlants extends AbstractMigration
             ->addColumn('sinonimia', 'text')
             ->addColumn('outros_nomes_populares', 'text')
             ->addColumn('origem', 'integer')
-            ->addColumn('endemismo', 'integer')
+            ->addColumn('endemismo', 'integer') // 0:não endemica; 1:endemica;
             ->addColumn('continente', 'integer')
             ->addColumn('pais', 'integer')
             ->addColumn('dominio_fitogeografico', 'string')
@@ -44,7 +44,7 @@ class CreatePlants extends AbstractMigration
             ->addColumn('nervacao_folha', 'string')
             ->addColumn('cor_flor', 'string')
             ->addColumn('plano_simetria_flor', 'string')
-            ->addColumn('disposicao_flor', 'integer')
+            ->addColumn('disposicao_flor', 'string')
             ->addColumn('corola_flor', 'string')
             ->addColumn('calice_flor', 'string')
             ->addColumn('perianto_flor', 'string')

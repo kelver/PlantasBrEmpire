@@ -11,7 +11,6 @@
             {% include 'basics/lateralL.html.twig' %}
             <!-- main start -->
             <!-- ================ -->
-            <div class="main col-md-6 col-lg-6">
                 <!-- page-title start -->
                 <!-- ================ -->
                 <h3 class="page-title">Seja bem vindo!</h3>
@@ -28,7 +27,7 @@
                             <div style="padding: 5px;">
                                 <h5 class="title">Já conhece o SIBOL???</h5>
                                 <div class="separator"></div>
-                                <p class="mb-10">O sistema tem como objetivo facilitar e agilizar o processo de identificação de plantas... <a href="sibol.php" class="margin-clear">Leia Mais</a></p>
+                                <p class="mb-10">O sistema tem como objetivo facilitar e agilizar o processo de identificação de plantas... <a href="{{ route('sibol') }}" class="margin-clear">Leia Mais</a></p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +44,7 @@
                             <div style="padding: 5px;">
                                 <h5 class="title">Encontre aqui a planta ideal para seu espaço ou projeto!</h5>
                                 <div class="separator"></div>
-                                <p class="mb-10">O "Recrutador de Plantas" é um sistema que lhe permite selecionar espécies para cultivo ...<a href="" class="margin-clear">Leia Mais</a></p>
+                                <p class="mb-10">O "Recrutador de Plantas" é um sistema que lhe permite selecionar espécies para cultivo ...<a href="{{ route('recrutador') }}" class="margin-clear">Leia Mais</a></p>
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ class CreateContatos extends AbstractMigration
             ->addColumn('email', 'string')
             ->addColumn('assunto', 'string')
             ->addColumn('mensagem', 'text', array('limit' => MysqlAdapter::TEXT_LONG))
+            ->addColumn('status', 'char')
             ->addColumn('data', 'datetime')
             ->save();
     }
