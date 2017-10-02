@@ -37,6 +37,7 @@
                               menu == 'generos' or
                               menu == 'origens' or
                               menu == 'paises' or
+                              menu == 'caracteresEspeciais' or
                               menu == 'tipoFolha'
                         %}
                             class="active"
@@ -64,6 +65,9 @@
                             </li>
                             <li {% if menu == 'tipoFolha' %}  class="active" {% endif %}>
                                 <a href="{{ route('admin.tipoFolha.list') }}">Tipos de Folha</a>
+                            </li>
+                            <li {% if menu == 'caracteresEspeciais' %}  class="active" {% endif %}>
+                                <a href="{{ route('admin.caracteresEspeciais.list') }}">Caracteres Especiais</a>
                             </li>
                         </ul>
                     </li>

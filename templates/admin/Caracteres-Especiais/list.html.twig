@@ -21,35 +21,31 @@
 						<!-- Lista usuários -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title col-md-10">Cadastros</h5>
-								<a href="{{ route('admin.cadastros.new') }}" class="btn btn-success btn-labeled"><b><i class="fa fa-plus"></i></b> Novo</a>
+								<h5 class="panel-title col-md-10">Caracteres Especiais</h5>
+								<a href="{{ route('admin.caracteresEspeciais.new') }}" class="btn btn-success btn-labeled"><b><i class="fa fa-plus"></i></b> Novo</a>
 							</div>
 
 							<table class="table datatable-basic table-hover">
 								<thead>
 									<tr>
-										<th>Nome</th>
-										<th>Usuário</th>
-										<th>E-Mail</th>
-										<th>Telefone</th>
-										<th>Primeiro Acesso</th>
-										<th>Ultimo Acesso</th>
+										<th>#</th>
+										<th>Caracter</th>
+										<th>Tipo</th>
 										<th>Status</th>
 										<th class="text-center"></th>
 									</tr>
 								</thead>
 								<tbody>
-								{% for cadastro in cadastros %}
+								{% for caracteresEspeciais in caracteres %}
 									<tr>
-										<td>{{ cadastro.Pessoa.nome }}</td>
-										<td>{{ cadastro.usuario }}</td>
-										<td>{{ cadastro.Pessoa.email }}</td>
-										<td>{{ cadastro.Pessoa.telefone }}</td>
-										<td>{{ cadastro.primeiro_acesso|date("d/m/Y") }}</td>
-										<td>{{ cadastro.ultimo_acesso|date("d/m/Y") }}</td>
+										<td>{{ caracteres.id }}</td>
+										<td>{{ caracteres.caracter }}</td>
 										<td>
-											<span class="label label-{{ cadastro.status == 1 ? 'success' : 'danger' }}">
-												{{ cadastro.status == 1 ? 'Ativo' : 'Inativo' }}
+											{{ caracteres.tipo == 1 ? 'Casca' : 'Folha' }}
+										</td>
+										<td>
+											<span class="label label-{{ caracteres.status == 1 ? 'success' : 'danger' }}">
+												{{ caracteres.status == 1 ? 'Ativo' : 'Inativo' }}
 											</span>
 										</td>
 										<td class="text-center">
@@ -59,15 +55,15 @@
 														<i class="icon-menu9"></i>
 													</a>
 
-                                                    {% set newStatus = cadastro.status == 1 ? '0' : '1' %}
+                                                    {% set newStatus = caracteres.status == 1 ? '0' : '1' %}
 													<ul class="dropdown-menu dropdown-menu-right">
-														<li><a href="{{ route('admin.cadastros.edit', {'id': cadastro.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
-														<li><a class="sweet_warning" data-title="{{ cadastro.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
-															   data-text="Realmente deseja {{ cadastro.status == 1 ? 'inativar' : 'ativar' }} o usuário {{ cadastro.usuario }}?"
-																data-rota="{{ route('admin.cadastros.status', {'id': cadastro.id, 'status': newStatus}) }}"
-																data-status="{{ cadastro.status == 1 ? 'Inativar' : 'Ativar' }}">
+														<li><a href="{{ route('admin.caracteresEspeciais.edit', {'id': caracteres.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
+														<li><a class="sweet_warning" data-title="{{ caracteres.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
+															   data-text="Realmente deseja {{ caracteres.status == 1 ? 'inativar' : 'ativar' }} a especie {{ caracteres.caracter }}?"
+																data-rota="{{ route('admin.caracteresEspeciais.status', {'id': caracteres.id, 'status': newStatus}) }}"
+																data-status="{{ caracteres.status == 1 ? 'Inativar' : 'Ativar' }}">
 																<i class="fa fa-times-circle-o"></i>
-                                                                {{ cadastro.status == 1 ? 'Inativar' : 'Ativar' }}
+                                                                {{ caracteres.status == 1 ? 'Inativar' : 'Ativar' }}
 															</a>
 														</li>
 													</ul>

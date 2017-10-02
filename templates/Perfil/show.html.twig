@@ -1,0 +1,61 @@
+{% include 'basics/top.html.twig' %}
+{% include 'basics/headerTop.html.twig' %}
+{% include 'basics/menu.html.twig' %}
+
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+            {% include 'basics/lateralL.html.twig' %}
+            <!-- main start -->
+            <!-- ================ -->
+            <!-- page-title start -->
+            <!-- ================ -->
+            <div class="main col-lg-12">
+                <section class="main-container">
+                        <div class="row">
+
+                            <!-- main start -->
+                            <!-- ================ -->
+                            <div class="main col-12">
+
+                                <!-- page-title start -->
+                                <!-- ================ -->
+                                <h1 class="page-title">{{ pessoa.nome }}</h1>
+                                <div class="separator-2"></div>
+                                <!-- page-title end -->
+                                <div class="row">
+                                    <div class="col-xl-8 col-md-8">
+                                        <p> {{ pagamento.observacoes }}</p>
+                                    </div>
+                                    <div class="col-md-4 ml-xl-auto">
+                                        <h3 class="title">Dados</h3>
+                                        <ul class="list-icons">
+                                            <li><i class="fa fa-phone pr-10 text-default"></i> {{ pessoa.telefone }}</li>
+                                            <li><i class="fa fa-mobile pr-10 text-default"></i> {{ pessoa.telefone }}</li>
+                                            <li><a href="mailto:{{ pessoa.email }}"><i class="fa fa-envelope-o pr-10"></i> {{ pessoa.email }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-12 col-md-12">
+                                        <h3 class="title">Faturamento</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- main end -->
+
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!-- main end -->
+        {% include 'basics/lateralD.html.twig' %}
+    </div>
+</section>
+<!-- main-container end -->
+
+{% include 'basics/rodape.php' %}
+</body>
+</html>

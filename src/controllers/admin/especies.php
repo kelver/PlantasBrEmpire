@@ -73,7 +73,7 @@ $app
             return $view->render(
                 '/admin/Especies/edit.html.twig', [
                     'especies' => $especies,
-                    'menu' => 'continentes'
+                    'menu' => 'especies'
                 ]
             );
         }, 'admin.especies.edit'

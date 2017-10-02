@@ -28,7 +28,7 @@
                                         <strong>SIBOL</strong>, faça login em nosso sistema.
                                     </div>
                                 </div>
-                            {% else %}
+                            {% endif %}
                             <form class="form-horizontal" role="form">
                                 <div class="panel-body">
                                     <fieldset class="col-md-12">
@@ -449,9 +449,30 @@
                                             </div>
                                         </div>
                                     </fieldset>
+
+                                    {% if Auth.check() %}
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-group btn-default btn-animated pull-right">Buscar <i class="fa fa-check"></i></button>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-sm-12">
+                                            <a href="cadastro" class="btn btn-group btn-warning btn-animated pull-right" style="margin: 5px;">Cadastre-se <i class="fa fa-check"></i></a>
+                                            <a href="{{ route('auth.show_login_form') }}" class="btn btn-group btn-info btn-animated pull-right" style="margin: 5px;">Acesse <i class="fa fa-check"></i></a>
+                                        </div>
+
+                                        <script type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
+                                        <script>
+                                            $(document).ready(function (){
+                                                $('input').keypress(function (e) {
+                                                    var code = null;
+                                                    code = (e.keyCode ? e.keyCode : e.which);
+                                                    return (code == 13) ? false : true;
+                                                });
+                                            });
+                                        </script>
+                                    {% endif %}
                                 </div>
                             </form>
-                            {% endif %}
                         </div>
                     </div>
                 </div>

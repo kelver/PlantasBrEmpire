@@ -34,6 +34,8 @@ require_once (__DIR__ . '/../src/controllers/sibol.php');
 require_once (__DIR__ . '/../src/controllers/glossario.php');
 require_once (__DIR__ . '/../src/controllers/referencias.php');
 require_once (__DIR__ . '/../src/controllers/contato.php');
+require_once (__DIR__ . '/../src/controllers/especies.php');
+require_once (__DIR__ . '/../src/controllers/perfil.php');
 
 // Rotas Administrativas
 require_once (__DIR__ . '/../src/controllers/admin/auth.php');
@@ -49,6 +51,7 @@ require_once (__DIR__ . '/../src/controllers/admin/tipo-folha.php');
 require_once (__DIR__ . '/../src/controllers/admin/glossarios.php');
 require_once (__DIR__ . '/../src/controllers/admin/referencias.php');
 require_once (__DIR__ . '/../src/controllers/admin/especies.php');
+require_once (__DIR__ . '/../src/controllers/admin/caracteresEspeciais.php');
 
 //    ->get('/home', function (ServerRequestInterface $request) use ($app){
 //        $view = $app->service('view.renderer');

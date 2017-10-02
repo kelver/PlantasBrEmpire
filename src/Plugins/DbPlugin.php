@@ -11,6 +11,7 @@ namespace PlantasBr\Plugins;
 
 use Interop\Container\ContainerInterface;
 use PlantasBr\Models\Cadastros;
+use PlantasBr\Models\CaracteresEspeciais;
 use PlantasBr\Models\Categorias;
 use PlantasBr\Models\Contatos;
 use PlantasBr\Models\Continentes;
@@ -56,6 +57,16 @@ class DbPlugin implements PluginInterface
         $container->addLazy(
             'glossarios.repository', function (ContainerInterface $container) {
                 return $container->get('repository.factory')->factory(Glossario::class);
+            }
+        );
+        $container->addLazy(
+                'perfilCad.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(Cadastros::class);
+            }
+        );
+        $container->addLazy(
+                'perfilPess.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(Pessoa::class);
             }
         );
 
@@ -113,6 +124,11 @@ class DbPlugin implements PluginInterface
         $container->addLazy(
             'referencias.repository', function (ContainerInterface $container) {
                 return $container->get('repository.factory')->factory(Referencia::class);
+            }
+        );
+        $container->addLazy(
+            'caracteresEspeciais.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(CaracteresEspeciais::class);
             }
         );
     }

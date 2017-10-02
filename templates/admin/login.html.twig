@@ -1,21 +1,10 @@
 {% include 'admin/basics/top.html.twig' %}
 
 <body class="login-container">
-
-<!-- Main navbar -->
-<div class="navbar navbar-inverse">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
-
-		<ul class="nav navbar-nav pull-right visible-xs-block">
-			<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-		</ul>
-	</div>
-</div>
-<!-- /main navbar -->
-
-
-<!-- Page container -->
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse"></div>
+	<!-- /main navbar -->
+	<!-- Page container -->
 	<div class="page-container">
 
 		<!-- Page content -->
@@ -31,30 +20,32 @@
 					<form method="post" action="{{ route('admin.auth.login') }}">
 						<div class="panel panel-body login-form">
 							<div class="text-center">
-								<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
-								<h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
+								<div class="text-slate-300">
+									<img src="assets/images/logoPBR.png" style="align-items: center;" />
+								</div>
+								<h5 class="content-group">Seção Administrativa<small class="display-block">Faça login para ter acesso ao sistema.</small></h5>
 							</div>
 
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="text" class="form-control" placeholder="Username" name="usuario" id="usuario">
+								<input type="text" class="form-control" placeholder="Usuário" name="usuario" id="usuario">
 								<div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group has-feedback has-feedback-left">
-								<input type="text" class="form-control" placeholder="Password" name="senha" id="senha">
+								<input type="password" class="form-control" placeholder="Senha" name="senha" id="senha">
 								<div class="form-control-feedback">
 									<i class="icon-lock2 text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
+								<button type="submit" class="btn btn-primary btn-block">Acessar <i class="icon-circle-right2 position-right"></i></button>
 							</div>
 
 							<div class="text-center">
-								<a href="login_password_recover.html">Forgot password?</a>
+								<a href="login_password_recover.html">Esqueceu a senha?</a>
 							</div>
 						</div>
 					</form>
@@ -63,7 +54,7 @@
 
 					<!-- Footer -->
 					<div class="footer text-muted text-center">
-						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						&copy; 2017. <a href="#">Plantas do Brasil</a> - <a href="" target="_blank">GWeb</a>
 					</div>
 					<!-- /footer -->
 

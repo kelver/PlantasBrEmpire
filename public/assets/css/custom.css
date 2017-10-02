@@ -51,3 +51,18 @@ File Description: Place here your custom CSS styles
 .notice-danger>strong {
     color: #d73814;
 }
+
+.imgFill{
+    object-fit: cover;
+    width: 100%;
+}
+
+.h200{
+    height: 200px;
+}
+.h100{
+    height: 100px;
+}
+.h50{
+    height: 50px;
+}

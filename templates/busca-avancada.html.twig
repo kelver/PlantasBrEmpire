@@ -28,8 +28,8 @@
                                         <strong>BUSCA AVANÇADA</strong>, faça login em nosso sistema.
                                     </div>
                                 </div>
-                            {% else %}
-                            <form class="form-horizontal" role="form">
+                            {% endif %}
+                            <form class="form-horizontal" role="form" action="" method="post" id="buscaAvancada">
                                 <div class="form-group has-feedback">
                                     <div class="col-sm-12">
                                         <label>Família</label>
@@ -63,12 +63,29 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-group btn-default btn-animated pull-right">Buscar <i class="fa fa-check"></i></button>
-                                    </div>
+                                    {% if Auth.check() %}
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-group btn-default btn-animated pull-right">Buscar <i class="fa fa-check"></i></button>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-sm-12">
+                                            <a href="cadastro" class="btn btn-group btn-warning btn-animated pull-right" style="margin: 5px;">Cadastre-se <i class="fa fa-check"></i></a>
+                                            <a href="{{ route('auth.show_login_form') }}" class="btn btn-group btn-info btn-animated pull-right" style="margin: 5px;">Acesse <i class="fa fa-check"></i></a>
+                                        </div>
+
+                                        <script type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
+                                        <script>
+                                            $(document).ready(function (){
+                                                $('input').keypress(function (e) {
+                                                    var code = null;
+                                                    code = (e.keyCode ? e.keyCode : e.which);
+                                                    return (code == 13) ? false : true;
+                                                });
+                                            });
+                                        </script>
+                                    {% endif %}
                                 </div>
                             </form>
-                            {% endif %}
                         </div>
                     </div>
                 </div>

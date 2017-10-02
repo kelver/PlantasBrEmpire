@@ -29,6 +29,14 @@ $app
         }, 'admin.cadastros.redirect'
     )
     ->get(
+        '/admin/Cadastros/new', function () use ($app) {
+            $view = $app->service('view.renderer');
+            return $view->render('admin/Cadastros/create.html.twig', [
+                'menu' => 'cadastros'
+            ]);
+        }, 'admin.cadastros.new'
+    )
+    ->get(
         '/admin/Cadastros/{id}/edit', function (ServerRequestInterface $request) use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');

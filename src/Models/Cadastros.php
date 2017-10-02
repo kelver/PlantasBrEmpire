@@ -25,7 +25,7 @@ class Cadastros extends Model implements JasnyUser, UserInterface
         'primeiro_acesso',
         'ultimo_acesso',
         'status',
-        'pessoa_id',
+        'idPessoa',
         'tipo'
     ];
 

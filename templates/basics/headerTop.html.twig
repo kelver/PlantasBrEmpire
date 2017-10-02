@@ -50,13 +50,14 @@
                         <div id="header-top-second"  class="clearfix">
 
                             {% if Auth.check() %}
-                                <div class="header-top-dropdown text-right">
-                                    <div class="btn-group">
-                                        <span class="btn btn-default btn-sm" style="cursor: auto;"><i class="fa fa-user pr-10"></i> Bem vindo {{ Auth.user().usuario|capitalize }}</span>
-                                    </div>
-                                    <div class="btn-group">
-                                        <a href="{{ route('auth.logout') }}" class="btn btn-default btn-sm"><i class="fa fa-sign-out pr-10"></i> Sair</a>
-                                    </div>
+                                <div class="btn-group dropdown pull-right">
+                                    <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Bem vindo {{ Auth.user().usuario|capitalize }}</button>
+                                    <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                                        <li><a href="{{ route('auth.logout') }}" class="btn btn-default btn-sm" style="text-align: left !important;"><i class="fa fa-user pr-10"></i> Perfil</a></li>
+                                        <li><a href="{{ route('auth.logout') }}" class="btn btn-default btn-sm" style="text-align: left !important;"><i class="fa fa-sign-out pr-10"></i> Sair</a></li>
+                                    </ul>
+
+
                                 </div>
                             {% else %}
                             <!-- header top dropdowns start -->

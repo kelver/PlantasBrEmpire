@@ -18,12 +18,7 @@ $app
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
             $data = $request->getParsedBody();
-
             $result = $auth->login($data);
-
-            //        print_r("<pre>");
-            //        print_r($auth->is('user'));
-            //        die("asd");
 
             if(!$result) {
                 return $view->render('login.html.twig');

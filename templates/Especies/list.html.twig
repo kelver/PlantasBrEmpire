@@ -1,0 +1,54 @@
+{% include 'basics/top.html.twig' %}
+{% include 'basics/headerTop.html.twig' %}
+{% include 'basics/menu.html.twig' %}
+
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+            {% include 'basics/lateralL.html.twig' %}
+            <!-- main start -->
+            <!-- ================ -->
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h3 class="page-title">Espécies</h3>
+                <div class="separator-2"></div>
+                <!-- page-title end -->
+
+                <div class="col-md-12">
+                    <div>{{ resposta }}</div>
+                    {% for especie in especies %}
+                    <div class="col-sm-4">
+                        <div class="image-box shadow text-center mb-20">
+                            <div class="overlay-container">
+                                <img src="./assets/imagens/especies/{{ especie.imagem }}" alt="" class="imgFill h200" />
+                                <div class="overlay-top">
+                                    <div class="text">
+                                        <h3><a href="{{ route('especies.show', {'id' : especie.id}) }}">{{ especie.especie }}</a></h3>
+                                    </div>
+                                </div>
+                                <div class="overlay-bottom">
+                                    <div class="links">
+                                        <a href="{{ route('especies.show', {'id' : especie.id}) }}" class="btn btn-gray-transparent btn-animated btn-sm">Ver Detalhes <i class="pl-10 fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <!-- main end -->
+            {% include 'basics/lateralD.html.twig' %}
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->
+
+{% include 'basics/rodape.php' %}
+</body>
+</html>

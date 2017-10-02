@@ -1,0 +1,49 @@
+{% include 'basics/top.html.twig' %}
+{% include 'basics/headerTop.html.twig' %}
+{% include 'basics/menu.html.twig' %}
+
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+            {% include 'basics/lateralL.html.twig' %}
+            <!-- main start -->
+            <!-- ================ -->
+            <!-- page-title start -->
+            <!-- ================ -->
+            <div class="main col-lg-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title"></h1>
+                <!-- page-title end -->
+
+                <!-- blogpost start -->
+                <!-- ================ -->
+                <article class="blogpost full">
+                    <div class="blogpost-content">
+                        <div id="carousel-blog-post" class="carousel slide mb-5" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="../assets/imagens/especies/{{ especieShow.imagem }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="large">{{ especieShow.especie }}</p>
+                    </div>
+                </article>
+                <!-- blogpost end -->
+            </div>
+        </div>
+        <!-- main end -->
+        {% include 'basics/lateralD.html.twig' %}
+    </div>
+</section>
+<!-- main-container end -->
+
+{% include 'basics/rodape.php' %}
+</body>
+</html>
