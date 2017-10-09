@@ -221,6 +221,17 @@ $(function() {
         formatSubmit: 'yyyy/mm/dd'
     });
 
+    // Localization BR
+    $('.pickadate-translated_BR').pickadate({
+        monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        today: 'Hoje',
+        clear: 'Limpar',
+        close: 'Fechar',
+        format: 'dd/mm/yyyy',
+        formatSubmit: 'yyyy-mm-dd'
+    });
+
 
     // Format options
     $('.pickadate-format').pickadate({

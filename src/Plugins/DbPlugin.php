@@ -21,6 +21,7 @@ use PlantasBr\Models\Glossario;
 use PlantasBr\Models\Origens;
 use PlantasBr\Models\Paises;
 use PlantasBr\Models\Pessoa;
+use PlantasBr\Models\Plantas;
 use PlantasBr\Models\Referencia;
 use PlantasBr\Models\TipoFolha;
 use PlantasBr\Repository\RepositoryFactory;
@@ -129,6 +130,12 @@ class DbPlugin implements PluginInterface
         $container->addLazy(
             'caracteresEspeciais.repository', function (ContainerInterface $container) {
                 return $container->get('repository.factory')->factory(CaracteresEspeciais::class);
+            }
+        );
+
+        $container->addLazy(
+            'plantas.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(Plantas::class);
             }
         );
     }

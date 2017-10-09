@@ -20,16 +20,6 @@ class CadastrosSeeder extends AbstractSeed
         $faker = \Faker\Factory::create('pt_BR');
         $cadastros = $this->table('cadastro');
 
-        $cadastros->insert([
-            'usuario' => 'kelver',
-            'senha' => $auth->hashPassword('123456'),
-            'primeiro_acesso' => date('Y-m-d H:i:s'),
-            'ultimo_acesso' => date('Y-m-d H:i:s'),
-            'status' => 1,
-            'idPessoa' => 1,
-            'tipo' => 1 // 0 usuario comum, 1 usuário adm
-        ])->save();
-
         $data = [];
         $i = 2;
         foreach(range(1,2) as $value){
@@ -40,7 +30,9 @@ class CadastrosSeeder extends AbstractSeed
                     'ultimo_acesso' => date('Y-m-d H:i:s'),
                     'status' => 1,
                     'idPessoa' => $i++,
-                    'tipo' => 0 // 0 usuario comum, 1 usuário adm
+                    'tipo' => 0, // 0 usuario comum, 1 usuário adm
+                    'dataAssinatura' => date('Y-m-d'),
+                    'periodoAssinatura' => '0'
                 ];
         }
         $cadastros->insert($data)->save();

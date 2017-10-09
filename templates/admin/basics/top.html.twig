@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ADM - Plantas do Brasil</title>
     <base href="/cortex/admin/" />
+
+
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -22,6 +24,11 @@
     <script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
     <!-- /core JS files -->
+    <script type="text/javascript" src="assets/js/core/app.js"></script>
+
+    <script type="text/javascript" src="assets/js/plugins/uploaders/plupload/plupload.full.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/uploaders/plupload/plupload.queue.min.js"></script>
+    <script type="text/javascript" src="assets/js/pages/uploader_plupload.js"></script>
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
@@ -30,7 +37,18 @@
     <script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
 
-    <script type="text/javascript" src="assets/js/core/app.js"></script>
+
+    <!-- Add the language *after* the pickadate script files -->
+    <script src="assets/js/plugins/pickers/pickdate/translations/pt_BR.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/pickers/pickadate/legacy.js"></script>
+
+
+    <script type="text/javascript" src="assets/js/pages/picker_date.js"></script>
+    <script type="text/javascript" src="assets/js/pages/form_select2.js"></script>
     <script type="text/javascript" src="assets/js/plugins/notifications/sweet_alert.min.js"></script>
     <script type="text/javascript" src="assets/js/pages/components_modals.js"></script>
     <script type="text/javascript" src="assets/js/pages/form_layouts.js"></script>

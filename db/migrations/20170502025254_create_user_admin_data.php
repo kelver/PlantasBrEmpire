@@ -19,7 +19,9 @@ class CreateUserAdminData extends AbstractMigration
                'ultimo_acesso' => date('Y-m-d H:i:s'),
                'status' => 1,
                'idPessoa' => 1,
-               'tipo' => ($i=='')?'':1 // 0 usuario comum, 1 usuário adm
+               'tipo' => ($i=='')?1:0, // 0 usuario comum, 1 usuário adm
+               'dataAssinatura' => date('Y-m-d'),
+               'periodoAssinatura' => '1'
            ])->save();
            $i=2;
        }

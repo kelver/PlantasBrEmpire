@@ -26,12 +26,14 @@ class Cadastros extends Model implements JasnyUser, UserInterface
         'ultimo_acesso',
         'status',
         'idPessoa',
-        'tipo'
+        'tipo',
+        'dataAssinatura',
+        'periodoAssinatura'
     ];
 
-    public function Pessoa()
+    public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class);
+        return $this->belongsTo(Pessoa::class, 'idPessoa', 'id');
     }
 
     /**

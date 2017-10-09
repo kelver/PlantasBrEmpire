@@ -13,7 +13,8 @@ $app
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
             $repositoryCadastro = $app->service('user.repository');
-            $cadastros = $repositoryCadastro->findByField('tipo', '0');
+//            $cadastros = $repositoryCadastro->findByField('tipo', '0');
+            $cadastros = \PlantasBr\Models\Cadastros::with('pessoa')->where('tipo', '=', '0')->get();
 
             return $view->render(
                 '/admin/Cadastros/list.html.twig', [
@@ -36,6 +37,23 @@ $app
             ]);
         }, 'admin.cadastros.new'
     )
+    ->post(
+        '/admin/Cadastros/store', function (ServerRequestInterface $request) use ($app) {
+        $auth = $app->service('auth');
+        $data = $request->getParsedBody();
+        $data['senha'] = $auth->hashPassword($data['senha']);
+        $data['usuario'] = $data['email'];
+        $data['dataAssinatura'] = $data['dataAssinatura_submit'];
+
+        print_r($data);
+        $repositoryUsuario = $app->service('user.repository');
+        $repositoryPessoa = $app->service('pessoa.repository');
+        $Pessoa = $repositoryPessoa->create($data);
+        $data['idPessoa'] = $Pessoa->id;
+        $repositoryUsuario->create($data);
+        return $app->route('admin.cadastros.list');
+    }, 'admin.cadastros.store'
+    )
     ->get(
         '/admin/Cadastros/{id}/edit', function (ServerRequestInterface $request) use ($app) {
             $view = $app->service('view.renderer');
@@ -45,9 +63,18 @@ $app
             $cadastros = $repositoryCadastro->findOneBy(
                 ['id' => $id]
             );
+            $repositoryPessoa = $app->service('pessoa.repository');
+            $pessoa = $repositoryPessoa->findOneBy(
+                ['id' => $cadastros['idPessoa']]
+            );
+//            print_r('<pre>');
+//            print_r($cadastros);
+//            print_r($pessoa);
+
             return $view->render(
                 '/admin/Cadastros/edit.html.twig', [
-                    'cadastros' => $cadastros,
+                    'usuario' => $cadastros,
+                    'pessoa' => $pessoa,
                     'menu' => 'cadastros'
                 ]
             );
@@ -58,16 +85,15 @@ $app
             $auth = $app->service('auth');
             $repositoryPessoa = $app->service('pessoa.repository');
             $repositoryCadastro = $app->service('user.repository');
+
             $idCadastro = $request->getAttribute('id');
-            $idPessoa = $repositoryCadastro->find($idCadastro)['attributes']['pessoa_id'];
             $data = $request->getParsedBody();
             $dataPessoa = ['nome' => $data['nome'], 'email' => $data['email'], 'telefone' => $data['telefone']];
-            $dataCadastro = ['usuario' => $data['usuario']];
+            $dataCadastro = ['usuario' => $data['email']];
             $data['senha'] != '' ? $dataCadastro = ['senha' => $auth->hashPassword($data['senha'])] : '';
 
-            $repositoryCadastro->update($idCadastro, $dataCadastro);
-
-            $repositoryPessoa->update($idPessoa, $dataPessoa);
+            $repositoryCad = $repositoryCadastro->update($idCadastro, $dataCadastro);
+            $repositoryPessoa->update($repositoryCad->idPessoa, $dataPessoa);
             return $app->route('admin.cadastros.list');
         }, 'admin.cadastros.update'
     )

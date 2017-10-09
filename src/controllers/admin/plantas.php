@@ -29,6 +29,19 @@ $app
         }, 'admin.plantas.redirect'
     )
     ->get(
+        '/admin/Plantas/new', function () use ($app) {
+            $view = $app->service('view.renderer');
+            $auth = $app->service('auth');
+            $repository= $app->service('plantas.repository');
+
+            return $view->render(
+                '/admin/Plantas/create.html.twig', [
+                    'menu' => 'plantas'
+                ]
+            );
+        }, 'admin.plantas.new'
+    )
+    ->get(
         '/admin/Plantas/{id}/edit', function (ServerRequestInterface $request) use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');

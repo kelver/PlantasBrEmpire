@@ -17,7 +17,7 @@ $(function() {
 
     // Default initialization
     $('.select').select2({
-        minimumResultsForSearch: Infinity
+        minimumResultsForSearch: Infinity,
     });
 
 

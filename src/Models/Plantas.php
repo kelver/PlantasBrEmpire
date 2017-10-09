@@ -11,21 +11,17 @@ namespace PlantasBr\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa extends Model
+class Plantas extends Model
 {
     //desabilita tentativas de campos updated_at e created_at
     public $timestamps = false;
-    protected $table = 'pessoa';
 
     //mass assignment
-    protected $fillable = [
-        'nome',
-        'email',
-        'telefone'
-    ];
-
-    public function cadastro()
-    {
-        return $this->hasMany(Cadastros::class, 'idPessoa', 'id');
-    }
+//    protected $fillable = [
+//        'nome',
+//        'email',
+//        'assunto',
+//        'mensagem',
+//        'data'
+//    ];
 }
