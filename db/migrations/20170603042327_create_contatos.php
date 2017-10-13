@@ -12,7 +12,7 @@ class CreateContatos extends AbstractMigration
             ->addColumn('assunto', 'string')
             ->addColumn('mensagem', 'text', array('limit' => MysqlAdapter::TEXT_LONG))
             ->addColumn('status', 'char')
-            ->addColumn('data', 'datetime')
+            ->addColumn('data', 'timestamp', array('default' => 'CURRENT_TIMESTAMP', 'null' => true))
             ->save();
     }
 

@@ -8,8 +8,8 @@ class CreatePlano extends AbstractMigration
         $this->table('plano')
             ->addColumn('nome_plano', 'string')
             ->addColumn('valor_plano', 'decimal', 10, 2)
-            ->addColumn('data_cadastro', 'datetime')
-            ->addColumn('validade', 'datetime')
+            ->addColumn('data_cadastro', 'timestamp', array('default' => 'CURRENT_TIMESTAMP', 'null' => true))
+            ->addColumn('validade', 'timestamp', array('default' => 'CURRENT_TIMESTAMP', 'null' => true))
             ->addColumn('status', 'integer')
             ->save();
     }
