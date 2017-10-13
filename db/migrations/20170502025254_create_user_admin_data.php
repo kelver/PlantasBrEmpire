@@ -15,7 +15,7 @@ class CreateUserAdminData extends AbstractMigration
            $cadastros->insert([
                'usuario' => 'kelver'.$i,
                'senha' => $auth->hashPassword('123456'),
-               'primeiro_acesso' => date('Y-m-d H:i:s'),
+               'primeiro_acesso' => null,
                'ultimo_acesso' => date('Y-m-d H:i:s'),
                'status' => 1,
                'idPessoa' => 1,
