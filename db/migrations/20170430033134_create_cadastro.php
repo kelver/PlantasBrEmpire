@@ -3,7 +3,7 @@
 use Phinx\Migration\AbstractMigration;
 
 class CreateCadastro extends AbstractMigration
-{
+{ 
     public function up(){
         $this->table('cadastro')
             ->addColumn('usuario', 'string')
