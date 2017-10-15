@@ -53,19 +53,18 @@
 															<input class="col-md-11" id="video" placeholder="Vídeo" name="video">
 															<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Upload</span></button>
 														</div>
+													</div>
 												</fieldset>
 
 												<fieldset>
 													<legend class="text-bold">Registros Mapeados</legend>
-														<div id="mapa" class="col-md-12 form-group" style="height: 500px;"></div>
-														<div class="form-group">
-															<form>
-																<input type="text" name="longitude" placeholder="Longitude" class="">
-																<input type="text" name="latitude" placeholder="Latitude" class="">
-																<input type="text" name="fonte" placeholder="Fonte" class="">
-																<input type="button" name="enviar" value="Enviar" class="">
-															</form>
-														</div>
+													<div id="mapa" class="col-md-12" style="height: 500px;"></div>
+													<form>
+														<input type="text" name="longitude" placeholder="Longitude" class="">
+														<input type="text" name="latitude" placeholder="Latitude" class="">
+														<input type="text" name="fonte" placeholder="Fonte" class="">
+														<input type="button" name="enviar" value="Enviar" class="">
+													</form>
 												</fieldset>
 
 
@@ -467,7 +466,7 @@
     var json = [
         {
             "Id": '1',
-            "Latitude": -19.212355602107472,
+            "Latitude": -19.012355602107472,
             "Longitude": -44.20234468749999,
 			"Fonte": "Saueressig, D. 2920"
         },
@@ -490,7 +489,7 @@
             "Fonte": "Saueressig, D. 2924"
         },
         {
-            "Id": 5,
+            "Id": '5',
             "Latitude": -19.212355602107472,
             "Longitude": -44.20234468749999,
             "Descricao": "Conteúdo do InfoBox 1"

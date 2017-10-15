@@ -28,7 +28,8 @@ function abrirInfoBox(id, marker) {
 
 function carregarPontos(pontos) {
     var latlngbounds = new google.maps.LatLngBounds();
-	$.each(pontos, function(index, ponto) {
+
+	jQuery.each(pontos, function(index, ponto) {
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(ponto.Latitude, ponto.Longitude),
 			title: "Meu ponto personalizado! :-D",
@@ -38,7 +39,7 @@ function carregarPontos(pontos) {
 
 		var myOptions = {
             content: "<p><b>ID:</b> " + ponto.Id+ "<br><b>Latitude:</b> " + ponto.Latitude + "<br><b>Longitude:</b> " + ponto.Longitude + "<br><b>Fonte:</b> " + ponto.Fonte + "</p>",
-            pixelOffset: new google.maps.Size(-150, 0)
+            pixelOffset: new google.maps.Size(-100, 0)
         };
 
         infoBox[ponto.Id] = new InfoBox(myOptions);
@@ -57,3 +58,5 @@ function carregarPontos(pontos) {
         map.fitBounds(latlngbounds);
 	});
 }
+
+carregarPontos();
