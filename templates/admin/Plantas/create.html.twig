@@ -55,6 +55,18 @@
 														</div>
 												</fieldset>
 
+												<fieldset>
+													<legend class="text-bold">Registros Mapeados</legend>
+														<div id="mapa" class="col-md-12 form-group" style="height: 500px;"></div>
+														<div class="form-group">
+															<form>
+																<input type="text" name="longitude" placeholder="Longitude" class="">
+																<input type="text" name="latitude" placeholder="Latitude" class="">
+																<input type="text" name="fonte" placeholder="Fonte" class="">
+																<input type="button" name="enviar" value="Enviar" class="">
+															</form>
+														</div>
+												</fieldset>
 
 
 												<fieldset class="content-group">
@@ -407,7 +419,22 @@
 													</div>
 												</fieldset>
 
-													<button type="submit" class="btn bg-teal-400 pull-right"><i class="fa fa-pencil-square-o position-left"></i> Salvar </button>
+
+												<fieldset class="content-group">
+													<legend class="text-bold">Registros Mapeados</legend>
+
+													<div class="form-group col-md-6">
+														<label class="display-block">Referência </label>
+														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+													</div>
+
+													<div class="form-group col-md-6">
+														<label class="display-block">Link </label>
+														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+													</div>
+												</fieldset>
+
+												<button type="submit" class="btn bg-teal-400 pull-right"><i class="fa fa-pencil-square-o position-left"></i> Salvar </button>
 											</div>
 										</div>
 									</form>
@@ -434,5 +461,43 @@
 </div>
 <!-- /page container -->
 
+
+<script type="text/javascript" src="assets/js/maps/google/markers/mapa.js"></script>
+<script>
+    var json = [
+        {
+            "Id": '1',
+            "Latitude": -19.212355602107472,
+            "Longitude": -44.20234468749999,
+			"Fonte": "Saueressig, D. 2920"
+        },
+        {
+            "Id": '2',
+            "Latitude": -22.618827234831404,
+            "Longitude": -42.57636812499999,
+            "Fonte": "Saueressig, D. 2922"
+        },
+        {
+            "Id": '3',
+            "Latitude": -22.57825604463875,
+            "Longitude": -48.68476656249999,
+            "Fonte": "Saueressig, D. 2924"
+        },
+        {
+            "Id": '4',
+            "Latitude": -22.55825604463975,
+            "Longitude": -48.68476656249999,
+            "Fonte": "Saueressig, D. 2924"
+        },
+        {
+            "Id": 5,
+            "Latitude": -19.212355602107472,
+            "Longitude": -44.20234468749999,
+            "Descricao": "Conteúdo do InfoBox 1"
+        },
+    ];
+
+    carregarPontos(json);
+</script>
 </body>
 </html>

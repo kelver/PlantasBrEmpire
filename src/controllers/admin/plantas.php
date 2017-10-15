@@ -29,6 +29,14 @@ $app
         }, 'admin.plantas.redirect'
     )
     ->get(
+        '/admin/Plantas/mapa', function () use ($app) {
+            $view = $app->service('view.renderer');
+            return $view->render(
+                '/admin/Plantas/map.html.twig'
+            );
+        }, 'admin.plantas.mapa'
+    )
+    ->get(
         '/admin/Plantas/new', function () use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
