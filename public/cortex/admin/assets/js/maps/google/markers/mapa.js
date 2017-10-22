@@ -26,6 +26,15 @@ function abrirInfoBox(id, marker) {
     idInfoBoxAberto = id;
 }
 
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+    markers = [];
+}
+
+
 function carregarPontos(pontos) {
     var latlngbounds = new google.maps.LatLngBounds();
 

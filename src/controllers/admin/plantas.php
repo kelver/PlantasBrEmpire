@@ -29,14 +29,6 @@ $app
         }, 'admin.plantas.redirect'
     )
     ->get(
-        '/admin/Plantas/mapa', function () use ($app) {
-            $view = $app->service('view.renderer');
-            return $view->render(
-                '/admin/Plantas/map.html.twig'
-            );
-        }, 'admin.plantas.mapa'
-    )
-    ->get(
         '/admin/Plantas/new', function () use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
@@ -48,6 +40,18 @@ $app
                 ]
             );
         }, 'admin.plantas.new'
+    )
+    ->post(
+        '/admin/Plantas/store', function (ServerRequestInterface $request) use ($app) {
+        $data = $request->getParsedBody();
+        $data['status'] = 1;
+        print_r("<pre>");
+        print_r($data);
+        die('sdasdas');
+        $repository = $app->service('plantas.repository');
+        $repository->create($data);
+        return $app->route('admin.plantas.list');
+    }, 'admin.plantas.store'
     )
     ->get(
         '/admin/Plantas/{id}/edit', function (ServerRequestInterface $request) use ($app) {

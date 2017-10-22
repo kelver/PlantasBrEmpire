@@ -25,7 +25,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<form action="{{ route('admin.paises.store') }}" method="post">
+									<form action="{{ route('admin.plantas.store') }}" method="post">
 										<div class="panel panel-flat">
 											<div class="panel-body">
 
@@ -56,42 +56,41 @@
 													</div>
 												</fieldset>
 
-												<fieldset>
+												<fieldset class="content-group">
 													<legend class="text-bold">Registros Mapeados</legend>
 													<div id="mapa" class="col-md-12" style="height: 500px;"></div>
-													<form>
-														<input type="text" name="longitude" placeholder="Longitude" class="">
-														<input type="text" name="latitude" placeholder="Latitude" class="">
-														<input type="text" name="fonte" placeholder="Fonte" class="">
-														<input type="button" name="enviar" value="Enviar" class="">
+													<form id="mapeamento">
+														<input type="text" name="longitude" id="longitude" placeholder="Longitude" class="col-md-3">
+														<input type="text" name="latitude" id="latitude" placeholder="Latitude" class="col-md-3">
+														<input type="text" name="fonte" id="fonte" placeholder="Fonte" class="col-md-3">
+														<input type="button" name="enviar" value="Enviar" id="btnMapeamento" class="btn btn-primary">
 													</form>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Nomenclatura</legend>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Família </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="familia">Família </label>
+														<input class="form-control" name="familia" id="familia" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Nome científico </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="nome_cientifico">Nome científico </label>
+														<input class="form-control" name="nome_cientifico" id="nome_cientifico" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Nome Popular </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="nome_popular">Nome Popular </label>
+														<input class="form-control" name="nome_popular" id="nome_popular" type="text">
 													</div>
 													<hr>
 												</fieldset>
 
 												<fieldset class="content-group">
 													<div class="form-group col-md-6">
-														<label class="display-block">Gênero </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="genero">Gênero </label>
+														<select data-placeholder="Selecione o gênero" class="select" name="genero" id="genero">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
@@ -99,32 +98,31 @@
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Espécie </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="especie">Espécie </label>
+														<select data-placeholder="Selecione a espécie" class="select" name="especie" id="especie">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
 														</select>
 													</div>
 													<div class="form-group col-md-6">
-														<label class="display-block">Sinonímia </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;"></textarea>
+														<label class="display-block" for="sinonimia">Sinonímia </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="sinonimia" id="sinonimia"></textarea>
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Outros nomes populares </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;"></textarea>
+														<label class="display-block" for="outros_nome_populares">Outros nomes populares </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="outros_nome_populares" id="outros_nome_populares"></textarea>
 													</div>
 													<hr>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Ocorrência</legend>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Origem </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="origem">Origem </label>
+														<select data-placeholder="Selecione a origem" class="select" name="origem" id="origem">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
@@ -132,8 +130,17 @@
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Endemismo </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="endemismo">Endemismo </label>
+														<select data-placeholder="Selecione o endemismo" class="select" name="endemismo" id="endemismo">
+															<option></option>
+															<option value="1">Endemica</option>
+															<option value="0">Não Endemica</option>
+														</select>
+													</div>
+
+													<div class="form-group col-md-3">
+														<label class="display-block" for="continente">Continente </label>
+														<select data-placeholder="Selecione o continente" class="select" name="continente" id="continente">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
@@ -141,100 +148,87 @@
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Continente </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
-															<option></option>
-															<option value="0">Anual</option>
-															<option value="1">Mensal</option>
-														</select>
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block">País </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="país">País </label>
+														<select data-placeholder="Selecione o país" class="select" name="pais" id="pais">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
 														</select>
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Distribuição no Brasil</legend>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Domínio Fitogeográfico </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="dominio_fitogeografico">Domínio Fitogeográfico </label>
+														<input class="form-control" name="dominio_fitogeografico" id="dominio_fitogeografico" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Tipo de Vegetação </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="tipo_vegetacao">Tipo de Vegetação </label>
+														<input class="form-control" name="tipo_vegetacao" id="tipo_vegetacao" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Ecologia</legend>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Clima </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="clima">Clima </label>
+														<input class="form-control" name="clima" id="clima" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Substrato </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="substrato">Substrato </label>
+														<input class="form-control" name="substrato" id="substrato" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Grau de Umidade </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="grau_umidade">Grau de Umidade </label>
+														<input class="form-control" name="grau_umidade" id="grau_umidade" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Grupo Sucessional </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="grupo_sucessional">Grupo Sucessional </label>
+														<input class="form-control" name="grupo_sucessional" id="grupo_sucessional" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Exigência Lumínica </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="exigencia_luminica">Exigência Lumínica </label>
+														<input class="form-control" name="exigencia_luminica" id="exigencia_luminica" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Ciclo de Vida </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="ciclo_vida">Ciclo de Vida </label>
+														<input class="form-control" name="ciclo_vida" id="ciclo_vida" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Deiscência Foliar </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="deiscencia_foliar">Deiscência Foliar </label>
+														<input class="form-control" name="deiscencia_foliar" id="deiscencia_foliar" type="text">
 													</div>
 												</fieldset>
 
-
 												<fieldset class="content-group">
 													<div class="form-group col-md-12">
-														<label class="display-block">Resumo </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;"></textarea>
+														<label class="display-block" for="resumo">Resumo </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="resumo" id="resumo"></textarea>
 													</div>
 													<div class="form-group col-md-12">
-														<label class="display-block">Informações </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;"></textarea>
+														<label class="display-block" for="informacoes">Informações </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="informacoes" id="informacoes"></textarea>
 													</div>
 													<div class="form-group col-md-12">
-														<label class="display-block">Informações Adicionais </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;"></textarea>
+														<label class="display-block" for="informacoes_adicionais">Informações Adicionais </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="informacoes_adicionais" id="informacoes_adicionais"></textarea>
 													</div>
 												</fieldset>
 
-
 												<fieldset class="content-group">
 													<div class="form-group col-md-12">
-														<label class="display-block">Características </label>
-														<select data-placeholder="Selecione o período" class="select" name="periodoAssinatura" id="periodoAssinatura">
+														<label class="display-block" for="categorias">Categorias </label>
+														<select data-placeholder="Selecione o período" class="select" name="categorias" id="categorias">
 															<option></option>
 															<option value="0">Anual</option>
 															<option value="1">Mensal</option>
@@ -242,194 +236,173 @@
 													</div>
 												</fieldset>
 
-
 												<fieldset class="content-group">
 													<legend class="text-bold">Morfologia</legend>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Forma de Vida </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="forma_vida">Forma de Vida </label>
+														<input class="form-control" name="forma_vida" id="forma_vida" type="text">
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Altura Máxima </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="autura_max">Altura Máxima </label>
+														<input class="form-control" name="autura_max" id="autura_max" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Folha</legend>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Tipo de Folha </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="tipo_folha">Tipo de Folha </label>
+														<input class="form-control" name="tipo_folha" id="tipo_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Filotaxia </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="filotaxia">Filotaxia </label>
+														<input class="form-control" name="filotaxia" id="filotaxia" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Forma </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="forma_folha">Forma </label>
+														<input class="form-control" name="forma_folha" id="forma_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Margem </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="margem_folha">Margem </label>
+														<input class="form-control" name="margem_folha" id="margem_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Ápice </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="apice_folha">Ápice </label>
+														<input class="form-control" name="apice_folha" id="apice_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Base </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="base_folha">Base </label>
+														<input class="form-control" name="base_folha" id="base_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Nervação </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="nervacao_folha">Nervação </label>
+														<input class="form-control" name="nervacao_folha" id="nervacao_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Consistência </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="consistencia_folha">Consistência </label>
+														<input class="form-control" name="consistencia_folha" id="consistencia_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Pilosidade </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="pilosidade_folha">Pilosidade </label>
+														<input class="form-control" name="pilosidade_folha" id="pilosidade_folha" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Caracteres Especiais </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="caracteres_especiais_folha">Caracteres Especiais </label>
+														<input class="form-control" name="caracteres_especiais_folha" id="caracteres_especiais_folha" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Flor</legend>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Cor </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="cor_flor">Cor </label>
+														<input class="form-control" name="cor_flor" id="cor_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Disposição </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="disposicao_flor">Disposição </label>
+														<input class="form-control" name="disposicao_flor" id="disposicao_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Plano de Simetria </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="plano_simetria_flor">Plano de Simetria </label>
+														<input class="form-control" name="plano_simetria_flor" id="plano_simetria_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Cálice </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="calice_flor">Cálice </label>
+														<input class="form-control" name="calice_flor" id="calice_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Corola </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="corola_flor">Corola </label>
+														<input class="form-control" name="corola_flor" id="corola_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Forma da Corola </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="forma_corola_flor">Forma da Corola </label>
+														<input class="form-control" name="forma_corola_flor" id="forma_corola_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Perianto </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="perianto_flor">Perianto </label>
+														<input class="form-control" name="perianto_flor" id="perianto_flor" type="text">
 													</div>
 
 													<div class="form-group col-md-3">
-														<label class="display-block">Estames </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="estames_flor">Estames </label>
+														<input class="form-control" name="estames_flor" id="estames_flor" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Casca</legend>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Aparência </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="aparencia_casca">Aparência </label>
+														<input class="form-control" name="aparencia_casca" id="aparencia_casca" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Deiscência </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="deiscencia_casca">Deiscência </label>
+														<input class="form-control" name="deiscencia_casca" id="deiscencia_casca" type="text">
 													</div>
 
 													<div class="form-group col-md-4">
-														<label class="display-block">Textura Interna </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="textura_interna_casca">Textura Interna </label>
+														<input class="form-control" name="textura_interna_casca" id="textura_interna_casca" type="text">
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Cor Interna </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="cor_interna_casca">Cor Interna </label>
+														<input class="form-control" name="cor_interna_casca" id="cor_interna_casca" type="text">
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Caracteres Especiais: </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="caracteres_especiais_casca">Caracteres Especiais: </label>
+														<input class="form-control" name="caracteres_especiais_casca" id="caracteres_especiais_casca" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Fruto</legend>
 
 													<div class="form-group col-md-6top
 ">
-														<label class="display-block">Tipo de Fruto </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="tipo_fruto">Tipo de Fruto </label>
+														<input class="form-control" name="tipo_fruto" id="tipo_fruto" type="text">
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Cor do Fruto </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="cor_fruto">Cor do Fruto </label>
+														<input class="form-control" name="cor_fruto" id="cor_fruto" type="text">
 													</div>
 												</fieldset>
-
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Referências</legend>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Referência </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="texto">Referência </label>
+														<input class="form-control" name="texto" id="texto" type="text">
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block">Link </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
-													</div>
-												</fieldset>
-
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Registros Mapeados</legend>
-
-													<div class="form-group col-md-6">
-														<label class="display-block">Referência </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block">Link </label>
-														<input class="form-control" name="dataAssinatura" id="dataAssinatura" type="text">
+														<label class="display-block" for="link">Link </label>
+														<input class="form-control" name="link" id="link" type="text">
 													</div>
 												</fieldset>
 
@@ -495,6 +468,19 @@
             "Descricao": "Conteúdo do InfoBox 1"
         },
     ];
+    jQuery("#btnMapeamento").on('click', function (){
+        json.push(
+            {
+                "Id": 1,
+                "Latitude": jQuery("#latitude").val(),
+                "Longitude": jQuery("#longitude").val(),
+                "Descricao": jQuery("#fonte").val()
+            }
+		);
+console.log(json);
+        deleteMarkers();
+        carregarPontos(json);
+	});
 
     carregarPontos(json);
 </script>
