@@ -2,10 +2,10 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateEspecie extends AbstractMigration
+class CreateEspecies extends AbstractMigration
 {
     public function up(){
-        $this->table('especie')
+        $this->table('especies')
             ->addColumn('especie', 'string')
             ->addColumn('imagem', 'string')
             ->addColumn('status', 'integer')
@@ -14,6 +14,6 @@ class CreateEspecie extends AbstractMigration
 
     public function down()
     {
-        $this->dropTable('especie');
+        $this->dropTable('especies');
     }
 }

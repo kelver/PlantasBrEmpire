@@ -39,17 +39,17 @@
 									</tr>
 								</thead>
 								<tbody>
-								{% for cadastro in cadastros %}
+								{% for planta in plantas %}
 									<tr>
-										<td>{{ cadastro.Pessoa.nome }}</td>
-										<td>{{ cadastro.usuario }}</td>
-										<td>{{ cadastro.Pessoa.email }}</td>
-										<td>{{ cadastro.Pessoa.telefone }}</td>
-										<td>{{ cadastro.primeiro_acesso|date("d/m/Y") }}</td>
-										<td>{{ cadastro.ultimo_acesso|date("d/m/Y") }}</td>
+										<td>{{ planta.familia }}</td>
+										<td>{{ planta.nome_cientifico }}</td>
+										<td>{{ planta.nome_popular }}</td>
+										<td>{{ planta.especie }}</td>
+										<td>{{ planta.genero }}</td>
+										<td>{{ planta.origem }}</td>
 										<td>
-											<span class="label label-{{ cadastro.status == 1 ? 'success' : 'danger' }}">
-												{{ cadastro.status == 1 ? 'Ativo' : 'Inativo' }}
+											<span class="label label-{{ planta.status == 1 ? 'success' : 'danger' }}">
+												{{ planta.status == 1 ? 'Ativo' : 'Inativo' }}
 											</span>
 										</td>
 										<td class="text-center">

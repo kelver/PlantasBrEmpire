@@ -16,13 +16,21 @@ use PlantasBr\Models\Categorias;
 use PlantasBr\Models\Contatos;
 use PlantasBr\Models\Continentes;
 use PlantasBr\Models\Especies;
+use PlantasBr\Models\Estados;
 use PlantasBr\Models\Generos;
 use PlantasBr\Models\Glossario;
 use PlantasBr\Models\Origens;
 use PlantasBr\Models\Paises;
 use PlantasBr\Models\Pessoa;
 use PlantasBr\Models\Plantas;
+use PlantasBr\Models\plantasCategorias;
+use PlantasBr\Models\plantasContinentes;
+use PlantasBr\Models\plantasEspecies;
+use PlantasBr\Models\plantasEstados;
+use PlantasBr\Models\plantasPaises;
+use PlantasBr\Models\plantasRegioes;
 use PlantasBr\Models\Referencia;
+use PlantasBr\Models\Regioes;
 use PlantasBr\Models\TipoFolha;
 use PlantasBr\Repository\RepositoryFactory;
 use PlantasBr\ServiceContainerInterface;
@@ -136,6 +144,46 @@ class DbPlugin implements PluginInterface
         $container->addLazy(
             'plantas.repository', function (ContainerInterface $container) {
                 return $container->get('repository.factory')->factory(Plantas::class);
+            }
+        );
+
+        $container->addLazy(
+            'estados.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(Estados::class);
+            }
+        );
+
+        $container->addLazy(
+            'regioes.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(Regioes::class);
+            }
+        );
+
+
+        // Criação de planta
+        $container->addLazy(
+            'plantasEstados.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasEstados::class);
+            }
+        );
+        $container->addLazy(
+            'plantasContinentes.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasContinentes::class);
+            }
+        );
+        $container->addLazy(
+            'plantasRegioes.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasRegioes::class);
+            }
+        );
+        $container->addLazy(
+            'plantasPaises.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasPaises::class);
+            }
+        );
+        $container->addLazy(
+            'plantasCategorias.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasCategorias::class);
             }
         );
     }

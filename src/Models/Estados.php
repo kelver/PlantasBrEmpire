@@ -11,16 +11,15 @@ namespace PlantasBr\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Especies extends Model
+class Estados extends Model
 {
     //desabilita tentativas de campos updated_at e created_at
     public $timestamps = false;
-    protected $table = 'especies';
+    protected $table = 'estados';
 
     //mass assignment
     protected $fillable = [
-        'especie',
-        'status',
-        'imagem'
+        'estados',
+        'sigla'
     ];
 }

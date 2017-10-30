@@ -30,44 +30,6 @@
 											<div class="panel-body">
 
 												<fieldset class="content-group">
-													<legend class="text-bold">Arquivos de mídia</legend>
-													<div class="form-group">
-														<label for="fotos" class="control-label">Fotos:</label>
-														<div class="input-group file-caption-main">
-															<div tabindex="500" class="form-control file-caption  kv-fileinput-caption">
-																<div class="file-caption-name" title=""></div>
-															</div>
-
-															<div class="input-group-btn">
-																<button type="button" tabindex="500" title="Clear selected files" class="btn btn-default fileinput-remove fileinput-remove-button"><i class="icon-cross3"></i>  <span class="hidden-xs">Remover</span></button>
-																<button type="button" tabindex="500" title="Abort ongoing upload" class="btn btn-default hide fileinput-cancel fileinput-cancel-button"><i class="glyphicon glyphicon-ban-circle"></i>  <span class="hidden-xs">Cancel</span></button>
-																<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Upload</span></button>
-																<div tabindex="500" class="btn btn-primary btn-file"><i class="icon-file-plus"></i>  <span class="hidden-xs">Buscar</span><input class="file-input" multiple="multiple" id="1507508615242" type="file"></div>
-															</div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label for="video" class="control-label">Vídeo:</label>
-														<div class="input-group col-md-12">
-															<input class="col-md-11" id="video" placeholder="Vídeo" name="video">
-															<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Upload</span></button>
-														</div>
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Registros Mapeados</legend>
-													<div id="mapa" class="col-md-12" style="height: 500px;"></div>
-													<form id="mapeamento">
-														<input type="text" name="longitude" id="longitude" placeholder="Longitude" class="col-md-3">
-														<input type="text" name="latitude" id="latitude" placeholder="Latitude" class="col-md-3">
-														<input type="text" name="fonte" id="fonte" placeholder="Fonte" class="col-md-3">
-														<input type="button" name="enviar" value="Enviar" id="btnMapeamento" class="btn btn-primary">
-													</form>
-												</fieldset>
-
-												<fieldset class="content-group">
 													<legend class="text-bold">Nomenclatura</legend>
 
 													<div class="form-group col-md-4">
@@ -113,8 +75,8 @@
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block" for="outros_nome_populares">Outros nomes populares </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="outros_nome_populares" id="outros_nome_populares"></textarea>
+														<label class="display-block" for="outros_nomes_populares">Outros nomes populares </label>
+														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="outros_nomes_populares" id="outros_nomes_populares"></textarea>
 													</div>
 													<hr>
 												</fieldset>
@@ -143,7 +105,7 @@
 
 													<div class="form-group col-md-3">
 														<label class="display-block" for="continente">Continente </label>
-														<select data-placeholder="Selecione o continente" class="select" name="continente" id="continente" multiple="multiple">
+														<select data-placeholder="Selecione o continente" class="select" name="continente[]" id="continente" multiple="multiple">
 															<option></option>
                                                             {% for continente in continentes %}
 															<option value="{{ continente.id }}">{{ continente.continente }}</option>
@@ -153,7 +115,7 @@
 
 													<div class="form-group col-md-3">
 														<label class="display-block" for="país">País </label>
-														<select data-placeholder="Selecione o país" class="select" name="pais" id="pais" multiple="multiple">
+														<select data-placeholder="Selecione o país" class="select" name="pais[]" id="pais" multiple="multiple">
 															<option></option>
                                                             {% for pais in paises %}
 																<option value="{{ pais.id }}">{{ pais.pais }}</option>
@@ -177,134 +139,23 @@
 
 													<div class="form-group col-md-12">
 														<legend class="text-bold">Região</legend>
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Norte
-														</label>
 
+                                                        {% for regiao in regioes %}
 														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Sul
+															<input type="checkbox" name="regiao[]" id="regiao" value="{{ regiao.id }}">{{ regiao.regiao }}
 														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Sudeste
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Nordeste
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Centro-Oeste
-														</label>
+														{% endfor %}
 													</div>
 
 													<div class="form-group col-md-12">
 														<legend class="text-bold">Estados</legend>
 
 														<div class="row">
+                                                            {% for estado in estados %}
 															<label class="checkbox-inline col-md-2 col-xs-6" style="margin-left:15px;">
-																<input type="checkbox" name="estado[]" id="estado" value="">Acre
+																<input type="checkbox" name="estado[]" id="estado" value="{{ estado.id }}">{{ estado.estado }}
 															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Alagoas
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Amapá
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Amazonas
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Bahia
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Ceará
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Distrito Federal
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Espírito Santo
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Goiás
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Maranhão
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Mato Grosso
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Mato Grosso do Sul
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Minas Gerais
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Pará
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Paraíba
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Pernambuco
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Piauí
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio de Janeiro
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio Grande do Sul
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio Grande do Norte
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rondônia
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Roraima
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Santa Catarina
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">São Paulo
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Sergipe
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Tocantins
-															</label>
+															{% endfor %}
 														</div>
 													</div>
 												</fieldset>
@@ -366,7 +217,7 @@
 												<fieldset class="content-group">
 													<div class="form-group col-md-12">
 														<label class="display-block" for="categorias">Categorias </label>
-														<select data-placeholder="Selecione o período" class="select" name="categorias" id="categorias" multiple="multiple">
+														<select data-placeholder="Selecione o período" class="select" name="categorias[]" id="categorias" multiple="multiple">
 															<option></option>
                                                             {% for categoria in categorias %}
 																<option value="{{ categoria.id }}">{{ categoria.categoria }}</option>
@@ -384,8 +235,8 @@
 													</div>
 
 													<div class="form-group col-md-6">
-														<label class="display-block" for="autura_max">Altura Máxima </label>
-														<input class="form-control" name="autura_max" id="autura_max" type="text">
+														<label class="display-block" for="altura_max">Altura Máxima </label>
+														<input class="form-control" name="altura_max" id="altura_max" type="text">
 													</div>
 												</fieldset>
 
@@ -528,20 +379,6 @@
 													<div class="form-group col-md-6">
 														<label class="display-block" for="cor_fruto">Cor do Fruto </label>
 														<input class="form-control" name="cor_fruto" id="cor_fruto" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Referências</legend>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="texto">Referência </label>
-														<input class="form-control" name="texto" id="texto" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="link">Link </label>
-														<input class="form-control" name="link" id="link" type="text">
 													</div>
 												</fieldset>
 

@@ -111,7 +111,7 @@ class EspeciesSeeder extends AbstractSeed
     {
         $faker = Factory::create('pt_BR');
         $faker->addProvider($this);
-        $categorias = $this->table('especie');
+        $categorias = $this->table('especies');
         $data = [];
 
         foreach(range(1,6) as $value){

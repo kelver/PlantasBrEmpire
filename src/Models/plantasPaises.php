@@ -11,16 +11,25 @@ namespace PlantasBr\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Especies extends Model
+class plantasPaises extends Model
 {
     //desabilita tentativas de campos updated_at e created_at
     public $timestamps = false;
-    protected $table = 'especies';
+    protected $table = 'plantas_paises';
 
     //mass assignment
     protected $fillable = [
-        'especie',
-        'status',
-        'imagem'
+        'id_plantas',
+        'id_pais'
     ];
+
+    public function paises()
+    {
+        return $this->belongsToMany(Paises::class);
+    }
+
+    public function plantas()
+    {
+        return $this->belongsToMany(Plantas::class);
+    }
 }

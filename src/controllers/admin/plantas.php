@@ -12,8 +12,8 @@ $app
         '/admin/Plantas', function () use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
-            $repositoryCadastro = $app->service('user.repository');
-            $plantas = $repositoryCadastro->findByField('tipo', '0');
+            $repositoryPlantas = $app->service('plantas.repository');
+            $plantas = $repositoryPlantas->all();
 
             return $view->render(
                 '/admin/Plantas/list.html.twig', [
@@ -32,10 +32,41 @@ $app
         '/admin/Plantas/new', function () use ($app) {
             $view = $app->service('view.renderer');
             $auth = $app->service('auth');
+
+            $repositoryEspecie = $app->service('especies.repository');
+            $especies = $repositoryEspecie->all();
+            $repositoryCategoria = $app->service('categorias.repository');
+            $categorias = $repositoryCategoria->all();
+            $repositoryContinente = $app->service('continentes.repository');
+            $continentes = $repositoryContinente->all();
+            $repositoryGenero = $app->service('generos.repository');
+            $generos = $repositoryGenero->all();
+            $repositoryOrigem = $app->service('origens.repository');
+            $origens = $repositoryOrigem->all();
+            $repositoryPais = $app->service('paises.repository');
+            $paises = $repositoryPais->all();
+            $repositoryTipoFolha = $app->service('tipoFolha.repository');
+            $tipoFolha = $repositoryTipoFolha->all();
+            $repositoryEstados = $app->service('estados.repository');
+            $estados = $repositoryEstados->all();
+            $repositoryRegioes = $app->service('regioes.repository');
+            $regioes = $repositoryRegioes->all();
+
+
+
             $repository= $app->service('plantas.repository');
 
             return $view->render(
-                '/admin/Plantas/create.html.twig', [
+                '/admin/Plantas/new.html.twig', [
+                    'especies' => $especies,
+                    'categorias' => $categorias,
+                    'continentes' => $continentes,
+                    'generos' => $generos,
+                    'origens' => $origens,
+                    'paises' => $paises,
+                    'tipoFolha' => $tipoFolha,
+                    'estados' => $estados,
+                    'regioes' => $regioes,
                     'menu' => 'plantas'
                 ]
             );
@@ -43,15 +74,54 @@ $app
     )
     ->post(
         '/admin/Plantas/store', function (ServerRequestInterface $request) use ($app) {
-        $data = $request->getParsedBody();
-        $data['status'] = 1;
-        print_r("<pre>");
-        print_r($data);
-        die('sdasdas');
-        $repository = $app->service('plantas.repository');
-        $repository->create($data);
-        return $app->route('admin.plantas.list');
-    }, 'admin.plantas.store'
+            $data = $request->getParsedBody();
+            $data['status'] = 1;
+            $data['genero'] = 1;
+            $data['unidade_altura'] = 'mt';
+
+            //Cadastra Planta
+            $repository = $app->service('plantas.repository');
+            $plantaInserida = $repository->create($data);
+            //Atribui id da planta inserida
+            $data['id_plantas'] = $plantaInserida->id;
+
+            //cadastra estados
+            foreach($data['estado'] as $estado){
+                $data['id_estado'] = $estado;
+                $repositoryPlantasEstados = $app->service('plantasEstados.repository');
+                $repositoryPlantasEstados->create($data);
+            }
+
+            //cadastra continentes
+            foreach($data['continente'] as $continente){
+                $data['id_continente'] = $continente;
+                $repositoryPlantasContinentes = $app->service('plantasContinentes.repository');
+                $repositoryPlantasContinentes->create($data);
+            }
+
+            //cadastra paises
+            foreach($data['pais'] as $pais){
+                $data['id_pais'] = $pais;
+                $repositoryPlantasPaises = $app->service('plantasPaises.repository');
+                $repositoryPlantasPaises->create($data);
+            }
+
+            //cadastra regioes
+            foreach($data['regiao'] as $regiao){
+                $data['id_regiao'] = $regiao;
+                $repositoryPlantasRegioes = $app->service('plantasRegioes.repository');
+                $repositoryPlantasRegioes->create($data);
+            }
+
+            //cadastra categorias
+            foreach($data['categorias'] as $categoria){
+                $data['id_categoria'] = $categoria;
+                $repositoryPlantasCategorias = $app->service('plantasCategorias.repository');
+                $repositoryPlantasCategorias->create($data);
+            }
+
+            return $app->route('admin.plantas.list');
+        }, 'admin.plantas.store'
     )
     ->get(
         '/admin/Plantas/{id}/edit', function (ServerRequestInterface $request) use ($app) {
@@ -99,4 +169,3 @@ $app
             return $app->route('admin.plantas.list');
         }, 'admin.plantas.status'
     );
-
