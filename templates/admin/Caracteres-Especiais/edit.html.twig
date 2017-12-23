@@ -21,22 +21,26 @@
 						<!-- Lista usuários -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title">Edição de Especie</h5>
+								<h5 class="panel-title">Edição de Caracter Especial</h5>
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-
-									<form action="{{ route('admin.especies.update', {'id': especies.id}) }}" method="post" enctype="multipart/form-data">
+									<form action="{{ route('admin.caracteresEspeciais.store') }}" method="post" enctype="multipart/form-data">
 										<div class="panel panel-flat">
 											<div class="panel-body">
+
 												<fieldset class="content-group">
-													<div class="form-group">
-														<label for="especie" class="control-label">Espécie:</label>
-														<input name="especie" id="especie" type="text" class="form-control" placeholder="Espécie" value="{{ especies.especie }}">
+													<div class="form-group col-md-6">
+														<label for="caracter" class="control-label">Caractere:</label>
+														<input name="caracter" id="caracter" type="text" class="form-control" placeholder="Caractere" value="{{ caracteresEspeciais.caracter }}" >
 													</div>
-													<div class="form-group">
-														<label for="nome" class="control-label">Imagem: <img src="../../assets/imagens/especies/{{ especies.imagem }}" height="50px" /></label>
-														<input name="imagem" id="imagem" type="file" class="form-control file-styled-success" placeholder="{{ especies.imagem }}">
+													<div class="form-group col-md-6">
+														<label for="tipo" class="control-label">Tipo:</label>
+														<select class="form-control" name="tipo" id="tipo">
+															<option>Selecione o tipo</option>
+															<option value="0" {% if (caracteresEspeciais.tipo==0) %}selected{% endif %}>Foliar</option>
+															<option value="1" {% if (caracteresEspeciais.tipo==1) %}selected{% endif %}>Casca</option>
+														</select>
 													</div>
 												</fieldset>
 
@@ -51,8 +55,6 @@
 					</div>
 				</div>
 				<!-- /dashboard content -->
-
-
                 {% include 'admin/basics/rodape.html.twig' %}
 
 			</div>

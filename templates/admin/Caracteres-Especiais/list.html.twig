@@ -36,7 +36,7 @@
 									</tr>
 								</thead>
 								<tbody>
-								{% for caracteresEspeciais in caracteres %}
+								{% for caracteres in caracteresEspeciais %}
 									<tr>
 										<td>{{ caracteres.id }}</td>
 										<td>{{ caracteres.caracter }}</td>
@@ -59,7 +59,7 @@
 													<ul class="dropdown-menu dropdown-menu-right">
 														<li><a href="{{ route('admin.caracteresEspeciais.edit', {'id': caracteres.id}) }}"><i class="fa fa-pencil"></i> Editar</a></li>
 														<li><a class="sweet_warning" data-title="{{ caracteres.status == 1 ? 'Inativar' : 'Ativar' }} Registro"
-															   data-text="Realmente deseja {{ caracteres.status == 1 ? 'inativar' : 'ativar' }} a especie {{ caracteres.caracter }}?"
+															   data-text="Realmente deseja {{ caracteres.status == 1 ? 'inativar' : 'ativar' }} o caracter {{ caracteres.caracter }}?"
 																data-rota="{{ route('admin.caracteresEspeciais.status', {'id': caracteres.id, 'status': newStatus}) }}"
 																data-status="{{ caracteres.status == 1 ? 'Inativar' : 'Ativar' }}">
 																<i class="fa fa-times-circle-o"></i>
@@ -107,7 +107,7 @@
             },
             function(isConfirm) {
                 if (isConfirm) {
-                    window.location.href = "";
+                    window.location.href = "/admin/Caracteres-Especiais";
                 }
             }
 		);

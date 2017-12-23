@@ -21,22 +21,26 @@
 						<!-- Lista usuários -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title">Especie</h5>
+								<h5 class="panel-title">Caracteres Especiais</h5>
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<form action="{{ route('admin.especies.store') }}" method="post" enctype="multipart/form-data">
+									<form action="{{ route('admin.caracteresEspeciais.store') }}" method="post" enctype="multipart/form-data">
 										<div class="panel panel-flat">
 											<div class="panel-body">
 
 												<fieldset class="content-group">
 													<div class="form-group col-md-6">
-														<label for="especie" class="control-label">Espécie:</label>
-														<input name="especie" id="especie" type="text" class="form-control" placeholder="Espécie">
+														<label for="caracter" class="control-label">Caractere:</label>
+														<input name="caracter" id="caracter" type="text" class="form-control" placeholder="Caractere">
 													</div>
 													<div class="form-group col-md-6">
-														<label for="nome" class="control-label">Imagem:</label>
-														<input name="imagem" id="imagem" type="file" class="form-control file-styled-success">
+														<label for="tipo" class="control-label">Tipo:</label>
+														<select class="form-control" name="tipo" id="tipo">
+															<option>Selecione o tipo</option>
+															<option value="0">Foliar</option>
+															<option value="1">Casca</option>
+														</select>
 													</div>
 												</fieldset>
 

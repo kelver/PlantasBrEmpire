@@ -51,6 +51,10 @@ $app
             $estados = $repositoryEstados->all();
             $repositoryRegioes = $app->service('regioes.repository');
             $regioes = $repositoryRegioes->all();
+            $repositoryCaracteresFolha = $app->service('caracteres.repository');
+            $caracteresFolha = $repositoryCaracteresFolha->findByField('tipo', 0);
+            $repositoryCaracteresCasca = $app->service('caracteres.repository');
+            $caracteresCasca = $repositoryCaracteresFolha->findByField('tipo', 1);
 
 
 
@@ -67,6 +71,8 @@ $app
                     'tipoFolha' => $tipoFolha,
                     'estados' => $estados,
                     'regioes' => $regioes,
+                    'caracteresFolha' => $caracteresFolha,
+                    'caracteresCasca' => $caracteresCasca,
                     'menu' => 'plantas'
                 ]
             );
@@ -120,8 +126,72 @@ $app
                 $repositoryPlantasCategorias->create($data);
             }
 
-            return $app->route('admin.plantas.list');
+            //cadastra caracteres folha
+            foreach($data['caracteres_especiais_folha'] as $caracteresFolha){
+                $data['id_caracteres_especiais'] = $caracteresFolha;
+                $repositoryCaracteresFolhas = $app->service('plantasCaracteres.repository');
+                $repositoryCaracteresFolhas->create($data);
+            }
+
+            //cadastra caracteres casca
+            foreach($data['caracteres_especiais_casca'] as $caracteresCasca){
+                $data['id_caracteres_especiais'] = $caracteresCasca;
+                $repositoryCaracteresCasca = $app->service('plantasCaracteres.repository');
+                $repositoryCaracteresCasca->create($data);
+            }
+
+            return $app->route('admin.plantas.create', ['idPlanta' => $data['id_plantas']]);
         }, 'admin.plantas.store'
+    )
+    ->get(
+        '/admin/Plantas/create/{idPlanta}', function (ServerRequestInterface $request) use ($app) {
+            $view = $app->service('view.renderer');
+            $auth = $app->service('auth');
+            $idPlanta = $request->getAttribute('idPlanta');
+
+            return $view->render(
+                '/admin/Plantas/create.html.twig', [
+                    'idPlanta' => $idPlanta,
+                    'menu' => 'plantas'
+                ]
+            );
+        }, 'admin.plantas.create'
+    )
+    ->post(
+        '/admin/Plantas/finishAdd', function (ServerRequestInterface $request) use ($app) {
+        $data = $request->getParsedBody();
+        $data['id_plantas'] = $data['plantaId'];
+        $data['status'] = 1;
+	
+	    print_r("<pre>");
+	    print_r($data);
+	    //cadastra referencia planta
+	    for($i = 0; $i<count($data['ref']['texto']); $i++){
+		    $data['texto'] = $data['ref']['texto'][$i];
+		    $data['link'] = $data['ref']['link'][$i];
+		    $repositoryReferencia = $app->service('referencias.repository');
+		    $repositoryReferencia->create($data);
+	    }
+	
+	    //cadastra videos planta
+	    for($i = 0; $i<count($data['video']['texto']); $i++){
+		    $data['legenda'] = $data['video']['texto'][$i];
+		    $data['video'] = $data['video']['url'][$i];
+		    $repositoryVideos = $app->service('videos.repository');
+		    $repositoryVideos->create($data);
+	    }
+	
+	    //cadastra mapeamento planta
+	    for($i = 0; $i<count($data['map']['font']); $i++){
+		    $data['latitude'] = $data['map']['latitude'][$i];
+		    $data['longitude'] = $data['map']['longitude'][$i];
+		    $data['fonte'] = $data['map']['font'][$i];
+		    $repositoryMap = $app->service('map.repository');
+		    $repositoryMap->create($data);
+	    }
+	
+        return $app->route('admin.plantas.list');
+    }, 'admin.plantas.storeFinal'
     )
     ->get(
         '/admin/Plantas/{id}/edit', function (ServerRequestInterface $request) use ($app) {

@@ -6330,3 +6330,17 @@ h6.panel-title,
 .infoBox { background-color: #FFF; width: 300px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; border: 2px solid #3fa7d8; border-radius: 3px; margin-top: 10px }
 .infoBox p { padding: 0 15px; line-height: 25px; }
 .infoBox:before { border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #3fa7d8; top: -10px; content: ""; height: 0; position: absolute; width: 0; left: 138px }
+
+
+
+.listVideos, .listRef{
+  width: 100%;
+  max-height: 150px;
+  margin: 10px 0;
+  overflow: auto;
+  border:1px #ddd solid;
+}
+.listVideos li, .listRef li{
+  list-style: none;
+  color: #0864af;
+}

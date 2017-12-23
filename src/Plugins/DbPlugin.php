@@ -19,10 +19,12 @@ use PlantasBr\Models\Especies;
 use PlantasBr\Models\Estados;
 use PlantasBr\Models\Generos;
 use PlantasBr\Models\Glossario;
+use PlantasBr\Models\mapeamentosPlantas;
 use PlantasBr\Models\Origens;
 use PlantasBr\Models\Paises;
 use PlantasBr\Models\Pessoa;
 use PlantasBr\Models\Plantas;
+use PlantasBr\Models\plantasCaracteres;
 use PlantasBr\Models\plantasCategorias;
 use PlantasBr\Models\plantasContinentes;
 use PlantasBr\Models\plantasEspecies;
@@ -32,6 +34,7 @@ use PlantasBr\Models\plantasRegioes;
 use PlantasBr\Models\Referencia;
 use PlantasBr\Models\Regioes;
 use PlantasBr\Models\TipoFolha;
+use PlantasBr\Models\videosPlantas;
 use PlantasBr\Repository\RepositoryFactory;
 use PlantasBr\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -159,6 +162,12 @@ class DbPlugin implements PluginInterface
             }
         );
 
+        $container->addLazy(
+            'caracteres.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(CaracteresEspeciais::class);
+            }
+        );
+
 
         // Criação de planta
         $container->addLazy(
@@ -184,6 +193,21 @@ class DbPlugin implements PluginInterface
         $container->addLazy(
             'plantasCategorias.repository', function (ContainerInterface $container) {
                 return $container->get('repository.factory')->factory(plantasCategorias::class);
+            }
+        );
+        $container->addLazy(
+            'plantasCaracteres.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(plantasCaracteres::class);
+            }
+        );
+        $container->addLazy(
+            'videos.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(videosPlantas::class);
+            }
+        );
+        $container->addLazy(
+            'map.repository', function (ContainerInterface $container) {
+                return $container->get('repository.factory')->factory(mapeamentosPlantas::class);
             }
         );
     }

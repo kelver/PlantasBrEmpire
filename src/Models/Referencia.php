@@ -21,6 +21,7 @@ class Referencia extends Model
     protected $fillable = [
         'texto',
         'link',
-        'status'
+        'status',
+	    'id_plantas'
     ];
 }

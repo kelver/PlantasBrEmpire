@@ -230,9 +230,9 @@ $(function() {
     //
 
     $(".file-input-ajax").fileinput({
-        uploadUrl: "http://localhost", // server upload action
-        uploadAsync: true,
-        maxFileCount: 5,
+        uploadUrl: "./upload.php", // server upload action
+        uploadAsync: false,
+        maxFileCount: 8,
         initialPreview: [],
         fileActionSettings: {
             removeIcon: '<i class="icon-bin"></i>',
@@ -248,9 +248,15 @@ $(function() {
             icon: '<i class="icon-file-check"></i>',
             modal: modalTemplate
         },
-        initialCaption: "No file selected",
+        initialCaption: "Nenhuma imagem selecionada.",
         previewZoomButtonClasses: previewZoomButtonClasses,
-        previewZoomButtonIcons: previewZoomButtonIcons
+        previewZoomButtonIcons: previewZoomButtonIcons,
+
+        uploadExtraData: function() {
+            return {
+                plantaId: $("#plantaId").val()
+            };
+        }
     });
 
 

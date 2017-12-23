@@ -21,37 +21,38 @@
 						<!-- Lista usuários -->
 						<div class="panel panel-flat">
 							<div class="panel-heading">
-								<h5 class="panel-title">Cadastrar Planta</h5>
+								<h5 class="panel-title">Finalizar Cadastro de Planta</h5>
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
-									<form action="{{ route('admin.plantas.store') }}" method="post">
+									<form action="{{ route('admin.plantas.storeFinal') }}" method="post">
 										<div class="panel panel-flat">
 											<div class="panel-body">
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Arquivos de mídia</legend>
-													<div class="form-group">
-														<label for="fotos" class="control-label">Fotos:</label>
-														<div class="input-group file-caption-main">
-															<div tabindex="500" class="form-control file-caption  kv-fileinput-caption">
-																<div class="file-caption-name" title=""></div>
-															</div>
 
-															<div class="input-group-btn">
-																<button type="button" tabindex="500" title="Clear selected files" class="btn btn-default fileinput-remove fileinput-remove-button"><i class="icon-cross3"></i>  <span class="hidden-xs">Remover</span></button>
-																<button type="button" tabindex="500" title="Abort ongoing upload" class="btn btn-default hide fileinput-cancel fileinput-cancel-button"><i class="glyphicon glyphicon-ban-circle"></i>  <span class="hidden-xs">Cancel</span></button>
-																<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Upload</span></button>
-																<div tabindex="500" class="btn btn-primary btn-file"><i class="icon-file-plus"></i>  <span class="hidden-xs">Buscar</span><input class="file-input" multiple="multiple" id="1507508615242" type="file"></div>
-															</div>
+													<div class="form-group">
+														<div class="input-group col-lg-12">
+															<input type="file" class="file-input-ajax" multiple="multiple" name="images[]" id="images" >
+															<span class="help-block">Cuiadado com a quantidade de arquivos, recomendado 8.</span>
 														</div>
 													</div>
 
 													<div class="form-group">
 														<label for="video" class="control-label">Vídeo:</label>
 														<div class="input-group col-md-12">
-															<input class="col-md-11" id="video" placeholder="Vídeo" name="video">
-															<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Upload</span></button>
+															<div class="listVideos">
+																<ul></ul>
+															</div>
+
+															<div class="col-lg-4">
+																<input class="col-lg-12" id="urlVideo" placeholder="URL do Vídeo" name="urlVideo" />
+															</div>
+															<div class="col-lg-7">
+																<input class="col-lg-12" id="tituloVideo" placeholder="Título do Vídeo" name="tituloVideo" />
+															</div>
+															<button type="button" tabindex="500" title="Upload selected files" class="btn btn-default fileinput-upload fileinput-upload-button " id="btnVideo"><i class="icon-file-upload2"></i>  <span class="hidden-xs">Add</span></button>
 														</div>
 													</div>
 												</fieldset>
@@ -60,490 +61,43 @@
 													<legend class="text-bold">Registros Mapeados</legend>
 													<div id="mapa" class="col-md-12" style="height: 500px;"></div>
 													<form id="mapeamento">
-														<input type="text" name="longitude" id="longitude" placeholder="Longitude" class="col-md-3">
-														<input type="text" name="latitude" id="latitude" placeholder="Latitude" class="col-md-3">
-														<input type="text" name="fonte" id="fonte" placeholder="Fonte" class="col-md-3">
-														<input type="button" name="enviar" value="Enviar" id="btnMapeamento" class="btn btn-primary">
-													</form>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Nomenclatura</legend>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="familia">Família </label>
-														<input class="form-control" name="familia" id="familia" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="nome_cientifico">Nome científico </label>
-														<input class="form-control" name="nome_cientifico" id="nome_cientifico" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="nome_popular">Nome Popular </label>
-														<input class="form-control" name="nome_popular" id="nome_popular" type="text">
-													</div>
-													<hr>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<div class="form-group col-md-6">
-														<label class="display-block" for="genero">Gênero </label>
-														<select data-placeholder="Selecione o gênero" class="select" name="genero" id="genero">
-															<option></option>
-                                                            {% for genero in generos %}
-																<option value="{{ genero.id }}">{{ genero.genero }}</option>
-                                                            {% endfor %}
-														</select>
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="especie">Espécie </label>
-														<select data-placeholder="Selecione a espécie" class="select" name="especie" id="especie">
-															<option></option>
-                                                            {% for especie in especies %}
-																<option value="{{ especie.id }}">{{ especie.especie }}</option>
-                                                            {% endfor %}
-														</select>
-													</div>
-													<div class="form-group col-md-6">
-														<label class="display-block" for="sinonimia">Sinonímia </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="sinonimia" id="sinonimia"></textarea>
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="outros_nome_populares">Outros nomes populares </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="outros_nome_populares" id="outros_nome_populares"></textarea>
-													</div>
-													<hr>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Ocorrência</legend>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="origem">Origem </label>
-														<select data-placeholder="Selecione a origem" class="select" name="origem" id="origem">
-															<option></option>
-                                                            {% for origem in origens %}
-																<option value="{{ origem.id }}">{{ origem.origem }}</option>
-                                                            {% endfor %}
-														</select>
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="endemismo">Endemismo </label>
-														<select data-placeholder="Selecione o endemismo" class="select" name="endemismo" id="endemismo">
-															<option></option>
-															<option value="1">Endemica</option>
-															<option value="0">Não Endemica</option>
-														</select>
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="continente">Continente </label>
-														<select data-placeholder="Selecione o continente" class="select" name="continente" id="continente" multiple="multiple">
-															<option></option>
-                                                            {% for continente in continentes %}
-															<option value="{{ continente.id }}">{{ continente.continente }}</option>
-															{% endfor %}
-														</select>
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="país">País </label>
-														<select data-placeholder="Selecione o país" class="select" name="pais" id="pais" multiple="multiple">
-															<option></option>
-                                                            {% for pais in paises %}
-																<option value="{{ pais.id }}">{{ pais.pais }}</option>
-                                                            {% endfor %}
-														</select>
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Distribuição no Brasil</legend>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="dominio_fitogeografico">Domínio Fitogeográfico </label>
-														<input class="form-control" name="dominio_fitogeografico" id="dominio_fitogeografico" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="tipo_vegetacao">Tipo de Vegetação </label>
-														<input class="form-control" name="tipo_vegetacao" id="tipo_vegetacao" type="text">
-													</div>
-
-													<div class="form-group col-md-12">
-														<legend class="text-bold">Região</legend>
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Norte
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Sul
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Sudeste
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Nordeste
-														</label>
-
-														<label class="checkbox-inline">
-															<input type="checkbox" name="regiao[]" id="regiao" value="">Centro-Oeste
-														</label>
-													</div>
-
-													<div class="form-group col-md-12">
-														<legend class="text-bold">Estados</legend>
-
-														<div class="row">
-															<label class="checkbox-inline col-md-2 col-xs-6" style="margin-left:15px;">
-																<input type="checkbox" name="estado[]" id="estado" value="">Acre
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Alagoas
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Amapá
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Amazonas
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Bahia
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Ceará
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Distrito Federal
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Espírito Santo
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Goiás
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Maranhão
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Mato Grosso
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Mato Grosso do Sul
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Minas Gerais
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Pará
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Paraíba
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Pernambuco
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Piauí
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio de Janeiro
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio Grande do Sul
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rio Grande do Norte
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Rondônia
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Roraima
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Santa Catarina
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">São Paulo
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Sergipe
-															</label>
-
-															<label class="checkbox-inline col-md-2 col-xs-6">
-																<input type="checkbox" name="estado[]" id="estado" value="">Tocantins
-															</label>
+														<div class="col-lg-3 p-5">
+															<input type="text" name="longitude" id="longitude" placeholder="Longitude" class="col-md-12">
 														</div>
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Ecologia</legend>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="clima">Clima </label>
-														<input class="form-control" name="clima" id="clima" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="substrato">Substrato </label>
-														<input class="form-control" name="substrato" id="substrato" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="grau_umidade">Grau de Umidade </label>
-														<input class="form-control" name="grau_umidade" id="grau_umidade" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="grupo_sucessional">Grupo Sucessional </label>
-														<input class="form-control" name="grupo_sucessional" id="grupo_sucessional" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="exigencia_luminica">Exigência Lumínica </label>
-														<input class="form-control" name="exigencia_luminica" id="exigencia_luminica" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="ciclo_vida">Ciclo de Vida </label>
-														<input class="form-control" name="ciclo_vida" id="ciclo_vida" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="deiscencia_foliar">Deiscência Foliar </label>
-														<input class="form-control" name="deiscencia_foliar" id="deiscencia_foliar" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<div class="form-group col-md-12">
-														<label class="display-block" for="resumo">Resumo </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="resumo" id="resumo"></textarea>
-													</div>
-													<div class="form-group col-md-12">
-														<label class="display-block" for="informacoes">Informações </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="informacoes" id="informacoes"></textarea>
-													</div>
-													<div class="form-group col-md-12">
-														<label class="display-block" for="informacoes_adicionais">Informações Adicionais </label>
-														<textarea rows="4" cols="4" class="form-control elastic" placeholder="Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 96px;" name="informacoes_adicionais" id="informacoes_adicionais"></textarea>
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<div class="form-group col-md-12">
-														<label class="display-block" for="categorias">Categorias </label>
-														<select data-placeholder="Selecione o período" class="select" name="categorias" id="categorias" multiple="multiple">
-															<option></option>
-                                                            {% for categoria in categorias %}
-																<option value="{{ categoria.id }}">{{ categoria.categoria }}</option>
-                                                            {% endfor %}
-														</select>
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Morfologia</legend>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="forma_vida">Forma de Vida </label>
-														<input class="form-control" name="forma_vida" id="forma_vida" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="autura_max">Altura Máxima </label>
-														<input class="form-control" name="autura_max" id="autura_max" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Folha</legend>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="tipo_folha">Tipo de Folha </label>
-														<input class="form-control" name="tipo_folha" id="tipo_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="filotaxia">Filotaxia </label>
-														<input class="form-control" name="filotaxia" id="filotaxia" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="forma_folha">Forma </label>
-														<input class="form-control" name="forma_folha" id="forma_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="margem_folha">Margem </label>
-														<input class="form-control" name="margem_folha" id="margem_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="apice_folha">Ápice </label>
-														<input class="form-control" name="apice_folha" id="apice_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="base_folha">Base </label>
-														<input class="form-control" name="base_folha" id="base_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="nervacao_folha">Nervação </label>
-														<input class="form-control" name="nervacao_folha" id="nervacao_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="consistencia_folha">Consistência </label>
-														<input class="form-control" name="consistencia_folha" id="consistencia_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="pilosidade_folha">Pilosidade </label>
-														<input class="form-control" name="pilosidade_folha" id="pilosidade_folha" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="caracteres_especiais_folha">Caracteres Especiais </label>
-														<input class="form-control" name="caracteres_especiais_folha" id="caracteres_especiais_folha" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Flor</legend>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="cor_flor">Cor </label>
-														<input class="form-control" name="cor_flor" id="cor_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="disposicao_flor">Disposição </label>
-														<input class="form-control" name="disposicao_flor" id="disposicao_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="plano_simetria_flor">Plano de Simetria </label>
-														<input class="form-control" name="plano_simetria_flor" id="plano_simetria_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="calice_flor">Cálice </label>
-														<input class="form-control" name="calice_flor" id="calice_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="corola_flor">Corola </label>
-														<input class="form-control" name="corola_flor" id="corola_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="forma_corola_flor">Forma da Corola </label>
-														<input class="form-control" name="forma_corola_flor" id="forma_corola_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="perianto_flor">Perianto </label>
-														<input class="form-control" name="perianto_flor" id="perianto_flor" type="text">
-													</div>
-
-													<div class="form-group col-md-3">
-														<label class="display-block" for="estames_flor">Estames </label>
-														<input class="form-control" name="estames_flor" id="estames_flor" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Casca</legend>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="aparencia_casca">Aparência </label>
-														<input class="form-control" name="aparencia_casca" id="aparencia_casca" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="deiscencia_casca">Deiscência </label>
-														<input class="form-control" name="deiscencia_casca" id="deiscencia_casca" type="text">
-													</div>
-
-													<div class="form-group col-md-4">
-														<label class="display-block" for="textura_interna_casca">Textura Interna </label>
-														<input class="form-control" name="textura_interna_casca" id="textura_interna_casca" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="cor_interna_casca">Cor Interna </label>
-														<input class="form-control" name="cor_interna_casca" id="cor_interna_casca" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="caracteres_especiais_casca">Caracteres Especiais: </label>
-														<input class="form-control" name="caracteres_especiais_casca" id="caracteres_especiais_casca" type="text">
-													</div>
-												</fieldset>
-
-												<fieldset class="content-group">
-													<legend class="text-bold">Fruto</legend>
-
-													<div class="form-group col-md-6top
-">
-														<label class="display-block" for="tipo_fruto">Tipo de Fruto </label>
-														<input class="form-control" name="tipo_fruto" id="tipo_fruto" type="text">
-													</div>
-
-													<div class="form-group col-md-6">
-														<label class="display-block" for="cor_fruto">Cor do Fruto </label>
-														<input class="form-control" name="cor_fruto" id="cor_fruto" type="text">
-													</div>
+														<div class="col-lg-3 p-5">
+															<input type="text" name="latitude" id="latitude" placeholder="Latitude" class="col-md-12">
+														</div>
+														<div class="col-lg-5 p-5">
+															<input type="text" name="fonte" id="fonte" placeholder="Fonte" class="col-md-12">
+														</div>
+														<div class="col-lg-1 p-5">
+															<input type="button" name="enviar" value="Enviar" id="btnMapeamento" class="btn btn-primary">
+														</div>
+													</form>
 												</fieldset>
 
 												<fieldset class="content-group">
 													<legend class="text-bold">Referências</legend>
 
+                                                    <div class="listRef">
+                                                        <ul></ul>
+                                                    </div>
 													<div class="form-group col-md-6">
-														<label class="display-block" for="texto">Referência </label>
-														<input class="form-control" name="texto" id="texto" type="text">
+														<input class="form-control" name="textoReferencia" id="textoReferencia" type="text" placeholder="Texto">
 													</div>
 
-													<div class="form-group col-md-6">
-														<label class="display-block" for="link">Link </label>
-														<input class="form-control" name="link" id="link" type="text">
+													<div class="form-group col-md-4">
+														<input class="form-control" name="linkReferencia" id="linkReferencia" type="text" placeholder="Link">
 													</div>
+
+                                                    <div class="form-group col-md-2">
+                                                        <button type="button" tabindex="500" title="Upload selected files" id="btnReferencia" class="btn btn-default fileinput-upload fileinput-upload-button "><i class="icon-file-upload2"></i>  <span class="hidden-xs">Add</span></button>
+                                                    </div>
 												</fieldset>
+
+                                                <div id="dadosSerializados" style="display: none;">
+													<input type="hidden" name="plantaId" id="plantaId" value="{{ idPlanta }}">
+												</div>
 
 												<button type="submit" class="btn bg-teal-400 pull-right"><i class="fa fa-pencil-square-o position-left"></i> Salvar </button>
 											</div>
@@ -556,7 +110,6 @@
 					</div>
 				</div>
 				<!-- /dashboard content -->
-
 
                 {% include 'admin/basics/rodape.html.twig' %}
 
@@ -575,53 +128,63 @@
 
 <script type="text/javascript" src="assets/js/maps/google/markers/mapa.js"></script>
 <script>
-    var json = [
-        {
-            "Id": '1',
-            "Latitude": -19.012355602107472,
-            "Longitude": -44.20234468749999,
-			"Fonte": "Saueressig, D. 2920"
-        },
-        {
-            "Id": '2',
-            "Latitude": -22.618827234831404,
-            "Longitude": -42.57636812499999,
-            "Fonte": "Saueressig, D. 2922"
-        },
-        {
-            "Id": '3',
-            "Latitude": -22.57825604463875,
-            "Longitude": -48.68476656249999,
-            "Fonte": "Saueressig, D. 2924"
-        },
-        {
-            "Id": '4',
-            "Latitude": -22.55825604463975,
-            "Longitude": -48.68476656249999,
-            "Fonte": "Saueressig, D. 2924"
-        },
-        {
-            "Id": '5',
-            "Latitude": -19.212355602107472,
-            "Longitude": -44.20234468749999,
-            "Descricao": "Conteúdo do InfoBox 1"
-        },
-    ];
-    jQuery("#btnMapeamento").on('click', function (){
-        json.push(
-            {
-                "Id": 1,
-                "Latitude": jQuery("#latitude").val(),
-                "Longitude": jQuery("#longitude").val(),
-                "Descricao": jQuery("#fonte").val()
-            }
-		);
-console.log(json);
-        deleteMarkers();
-        carregarPontos(json);
-	});
+        var json = [];
 
-    carregarPontos(json);
+        jQuery('#btnReferencia').on('click', function (){
+            var texto = jQuery("#textoReferencia").val();
+            var link = jQuery("#linkReferencia").val();
+
+            jQuery('#dadosSerializados').append('' +
+                '<input type="hidden" name="ref[texto][]" id="textoRef" value="'+ texto +'">' +
+                '<input type="hidden" name="ref[link][] id="linkRef" value="'+ link +'">' +
+                '');
+            jQuery('#textoReferencia').val('');
+            jQuery('#linkReferencia').val('');
+
+
+            jQuery('.listRef ul').append('<li>'+ texto +' - <a href="'+ link +'" target="_blank">'+ link +'</a></li>');
+        });
+
+        jQuery('#btnVideo').on('click', function (){
+            var titulo = jQuery("#tituloVideo").val();
+            var url = jQuery("#urlVideo").val();
+
+            jQuery('#dadosSerializados').append('' +
+                '<input type="hidden" name="video[texto][]" id="tituloVideo" value="'+ titulo +'">' +
+                '<input type="hidden" name="video[url][]" id="urlVideo" value="'+ url +'">' +
+                '');
+            jQuery('#tituloVideo').val('');
+            jQuery('#urlVideo').val('');
+
+
+            jQuery('.listVideos ul').append('<li>'+ titulo +' - <a href="'+ url +'" target="_blank">'+ url +'</a></li>');
+        });
+
+
+        jQuery("#btnMapeamento").on('click', function (){
+            json.push(
+                {
+                    "Id": 1,
+                    "Latitude": jQuery("#latitude").val().replace(",",".").replace(" ",""),
+                    "Longitude": jQuery("#longitude").val().replace(",",".").replace(" ",""),
+                    "Descricao": jQuery("#fonte").val()
+                }
+            );
+
+            jQuery('#dadosSerializados').append('' +
+                '<input type="hidden" name="map[latitude][]" id="latitudeMap" value="'+ jQuery("#latitude").val().replace(",",".").replace(" ","") +'">' +
+                '<input type="hidden" name="map[longitude][]" id="longitudeMap" value="'+ jQuery("#longitude").val().replace(",",".").replace(" ","") +'">' +
+                '<input type="hidden" name="map[font][]" id="fontMap" value="'+ jQuery("#fonte").val() +'">' +
+                '');
+            jQuery('#latitude').val('');
+            jQuery('#longitude').val('');
+            jQuery('#fonte').val('');
+
+            deleteMarkers();
+            carregarPontos(json);
+        });
+
+        carregarPontos(json);
 </script>
 </body>
 </html>

@@ -9,6 +9,8 @@ class CreateReferencia extends AbstractMigration
             ->addColumn('texto', 'text')
             ->addColumn('link', 'string')
             ->addColumn('status', 'integer')
+            ->addColumn('id_plantas', 'integer')
+            ->addForeignKey('id_plantas', 'plants', 'id')
             ->save();
     }
 

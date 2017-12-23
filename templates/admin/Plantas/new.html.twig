@@ -290,7 +290,13 @@
 
 													<div class="form-group col-md-3">
 														<label class="display-block" for="caracteres_especiais_folha">Caracteres Especiais </label>
-														<input class="form-control" name="caracteres_especiais_folha" id="caracteres_especiais_folha" type="text">
+
+														<select data-placeholder="Selecione o período" class="select" name="caracteres_especiais_folha[]" id="caracteres_especiais_folha" multiple="multiple">
+															<option></option>
+                                                            {% for caractereFolha in caracteresFolha %}
+																<option value="{{ caractereFolha.id }}">{{ caractereFolha.caracter }}</option>
+                                                            {% endfor %}
+														</select>
 													</div>
 												</fieldset>
 
@@ -363,7 +369,13 @@
 
 													<div class="form-group col-md-6">
 														<label class="display-block" for="caracteres_especiais_casca">Caracteres Especiais: </label>
-														<input class="form-control" name="caracteres_especiais_casca" id="caracteres_especiais_casca" type="text">
+
+														<select data-placeholder="Selecione o período" class="select" name="caracteres_especiais_casca[]" id="caracteres_especiais_casca" multiple="multiple">
+															<option></option>
+                                                            {% for caractereCasca in caracteresCasca %}
+																<option value="{{ caractereCasca.id }}">{{ caractereCasca.caracter }}</option>
+                                                            {% endfor %}
+														</select>
 													</div>
 												</fieldset>
 
